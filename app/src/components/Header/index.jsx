@@ -1,28 +1,28 @@
 import React from 'react';
-import './styles.css';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-class Header extends React.Component {
+const Header = () => {
+    return (
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <Link to="/" className="navbar-brand">Sport Data Center</Link>
 
-    render() {
-        return <Navbar bg="primary" variant="dark">
-            <Navbar.Brand href="/">Sport Data Center</Navbar.Brand>
-            <Navbar.Collapse>
-                <Nav className="mr-auto">
-                    <Nav.Link href="/contact">Contact</Nav.Link>
-                    <Nav.Link href="/about">About</Nav.Link>
-                </Nav>
-                <Nav className="ml-auto">
-                    <Nav.Link href="/login">Login</Nav.Link>
-                    <Nav.Link href="/register">Register</Nav.Link>
-                </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-light">Search</Button>
-                </Form>
-            </Navbar.Collapse>
-        </Navbar>
-    }
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li className="nav-item active">
+                        <Link to="/about" className="nav-link">About Us</Link>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li className="nav-item active">
+                        <Link to="/login" className="nav-link">Login</Link>
+                    </li>
+                    <li className="nav-item active">
+                        <Link to="/register" className="nav-link">Register</Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    )
 };
 
 export default Header;
