@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 const NotFount = () => {
     return (
@@ -9,7 +10,7 @@ const NotFount = () => {
             </div>
             <div className="text-center">
                 <Link to="/">
-                    <button type="button" className="btn btn-primary btn-lg">Back to home</button>
+                    <Button color="primary" size="lg">Back to home</Button>
                 </Link>
             </div>
         </Fragment>
