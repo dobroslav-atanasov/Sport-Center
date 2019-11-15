@@ -1,0 +1,22 @@
+{
+  "name": "video-tutorials",
+  "version": "1.0.0",
+  "description": "exam video tutorials - 19.04.2019",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dobri",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-validator": "^6.2.0",
+    "handlebars-intl": "^1.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.6"
+  }
+}
