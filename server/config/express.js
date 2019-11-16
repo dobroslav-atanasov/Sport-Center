@@ -5,6 +5,6 @@ const secret = 'secret';
 
 module.exports = (app) => {
     app.use(cookieParser(secret));
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(cors())
+    app.use(bodyParser.json());/*.urlencoded({ extended: false }));*/
+    app.use(cors());
 };
