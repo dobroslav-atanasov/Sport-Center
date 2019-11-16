@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -26,16 +27,31 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    courses: [{
+    role: {
+        type: String,
+        enum: ['SuperAdmin', 'Admin', 'User'],
+        default: 'User'
+    },
+    events: [{
         type: mongoose.Types.ObjectId,
-        ref: 'Course'
+        ref: 'Event'
+    }],
+    results: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Result'
+    }],
+    comments: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Comment'
     }]
 });
 
 userSchema.methods = {
     matchPassword: function (password) {
-        return password === this.password;
+        return bcrypt.compare(this.password, password);
     }
 }
+
+// userSchema.pre('save')
 
 module.exports = mongoose.model('User', userSchema);

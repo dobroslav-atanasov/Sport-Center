@@ -1,16 +1,20 @@
-const env = process.env.NODE_ENV || 'development';
-const databaseConnector = require('./config/database');
+const config = require('./config/config');
+const dbConnection = require('./config/database');
 
-global.__basedir = __dirname;
+const app = require('express')();
 
-databaseConnector().then(() => {
-    const config = require('./config/config')[env];
-    const app = require('express')();
-    
+dbConnection().then(() => {
+
     require('./config/express')(app);
+
     require('./config/routes')(app);
 
-    app.listen(config.port, console.log(`Listening on port ${config.port}! Now its up to you...`));
-}).catch(err => {
-    console.log(err);
-});
+    app.use(function (err, req, res, next) {
+        console.error(err);
+        res.status(500).send(err.message);
+        console.log('*'.repeat(90))
+    });
+
+    app.listen(config.port, console.log(`Listening on port ${config.port}!`))
+
+}).catch(console.error);
