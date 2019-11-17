@@ -5,8 +5,8 @@ const Footer = () => {
     return (
         <footer className="footer">
             <p>
-                <span>Powered by</span>
-                <a href="https://github.com/dobroslav-atanasov" target="_black"> Dobroslav Atanasov </a>
+                <span>Powered by </span>
+                <i className="fa fa-github"></i><a href="https://github.com/dobroslav-atanasov" target="_black"> Dobroslav Atanasov </a>
                 <span>&copy; 2019 </span>
             </p>
         </footer>
