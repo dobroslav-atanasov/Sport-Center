@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 
 const townSchema = new mongoose.Schema({
     name: {
-        type: String
+        type: String,
+        required: true
     },
     country: {
-        type: String
+        type: String,
+        required: true
     }
 });
 
