@@ -11,6 +11,9 @@ const Header = () => {
                     <li className="nav-item active">
                         <Link to="/about" className="nav-link">About Us</Link>
                     </li>
+                    <li className="nav-item active">
+                        <Link to="/add-town" className="nav-link">Add Town</Link>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li className="nav-item active">

@@ -8,6 +8,7 @@ import Register from './components/Register';
 import Home from './components/Home';
 import About from './components/About';
 import NotFound from './components/NotFound';
+import Town from './components/Town';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
         <Route path="/about" exact component={About} />
+        <Route path="/add-town" exact component={Town} />
         <Route component={NotFound} />
       </Switch>
     </Router>
