@@ -6,13 +6,14 @@ const About = () => {
             <br />
             <div className="card bg-light">
                 <article className="card-body mx-auto">
-                    <h1 class="text-center">About Sport Data Center</h1>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-3 text-center text-primary">
-                            <i class="fab fa-stripe-s fa-10x"></i>
+                    <h2 className="card-title mt-3 text-center">About Us</h2>
+                    <hr />
+                    <div className="row">
+                        <div className="col-md-4">
+                            <img src="Sport-1.jpg" className="img-fluid" alt="Sport-1" />
+
                         </div>
-                        <div class="col-md-6">
+                        <div className="col-md-8">
                             <h5>
                                 Sport Data Center is a web application for sport events around the world. Its purpose is to connect people with the same interests of sport and to allow them to join any event they wish.
                                 It is intended for organizations, which want to set a sport event, and for athletes, who want to join an event - both for professionals and amateurs.

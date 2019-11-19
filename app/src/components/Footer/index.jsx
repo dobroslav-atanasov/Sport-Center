@@ -6,17 +6,6 @@ const Footer = () => {
         <footer className="footer">
             <div className="row">
                 <div className="col-md-4">
-                    <p>Test</p>
-                </div>
-                <div className="col-md-4">
-                    <p>Test</p>
-                </div>
-                <div className="col-md-4">
-                    <p>Test</p>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-4">
                 </div>
                 <div className="col-md-4">
                     <p>

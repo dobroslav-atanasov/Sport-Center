@@ -9,13 +9,16 @@ const Header = () => {
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Link to="/about" className="nav-link">About Us</Link>
+                        <Link to="/add-town" className="nav-link">Add Town</Link>
                     </li>
                     <li className="nav-item active">
-                        <Link to="/add-town" className="nav-link">Add Town</Link>
+                        <Link to="/create-event" className="nav-link">Create Event</Link>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
+                    <li className="nav-item active">
+                        <Link to="/about" className="nav-link">About Us</Link>
+                    </li>
                     <li className="nav-item active">
                         <Link to="/login" className="nav-link">Login</Link>
                     </li>
