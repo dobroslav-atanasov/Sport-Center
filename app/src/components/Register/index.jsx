@@ -63,7 +63,7 @@ const Register = () => {
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                            <button type="submit" class="btn btn-warning btn-block">Create Account</button>
                         </div>
                         <p class="text-center">Have an account? <Link to="/login">Log In</Link></p>
                     </form>

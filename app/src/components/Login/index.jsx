@@ -31,7 +31,7 @@ class Login extends React.Component {
                                 <input type="password" class="form-control" name="password" placeholder="Password" />
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                                <button type="submit" class="btn btn-warning btn-block">Log In</button>
                             </div>
                             <p class="text-center">Don't have account? <Link to="/register">Create Account</Link></p>
                         </form>
