@@ -14,6 +14,9 @@ const Header = () => {
                     <li className="nav-item active">
                         <Link to="/create-event" className="nav-link">Create Event</Link>
                     </li>
+                    <li className="nav-item active">
+                        <Link to="/users" className="nav-link">Users</Link>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li className="nav-item active">
