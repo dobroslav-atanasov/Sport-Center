@@ -1,6 +1,6 @@
 const config = require('./config/config');
 const dbConnection = require('./config/database');
-
+const seedSuperAdmin = require('./common/seedSuperAdmin');
 const app = require('express')();
 
 dbConnection().then(() => {
@@ -15,6 +15,7 @@ dbConnection().then(() => {
         console.log('*'.repeat(90))
     });
 
+    seedSuperAdmin.addSuperAdmin();
     app.listen(config.port, console.log(`Listening on port ${config.port}!`))
 
 }).catch(console.error);
