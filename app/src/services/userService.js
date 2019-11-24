@@ -18,6 +18,19 @@ const userService = {
         }).then(res => {
             console.log(res.data);
         });
+    },
+
+    login: function (data) {
+        const {username, password} = data;
+        return axios({
+            method: 'POST',
+            url: 'http://localhost:3333/api/user/login',
+            data: {
+                username,
+                password
+            },
+            withCredentials: true
+        }).then(res => res.data);
     }
 };
 
