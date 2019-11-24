@@ -10,7 +10,7 @@ const NotFount = () => {
             </div>
             <div className="text-center">
                 <Link to="/">
-                    <Button color="primary" size="lg">Back to home</Button>
+                    <Button color="warning" size="lg">Back to home</Button>
                 </Link>
             </div>
         </Fragment>

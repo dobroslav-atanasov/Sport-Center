@@ -9,7 +9,7 @@ class Login extends React.Component {
             username: '',
             password: '',
             errors: '',
-            isRedirect: false
+            // isRedirect: false
         };
     };
 
@@ -22,7 +22,9 @@ class Login extends React.Component {
             if (res === 'Invalid username or password!') {
                 this.setState({ errors: res });
             } else {
-                this.setState({ isRedirect: true });
+                this.props.login(this.props.history, data);
+                // this.props.history.push('/');
+                // this.setState({ isRedirect: true });
             }
         });
     };
@@ -35,7 +37,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            this.state.isRedirect ? <Redirect to="/" /> :
+            // this.state.isRedirect ? <Redirect to="/" /> :
                 <div className="container">
                     <br />
                     <div className="card bg-light">
