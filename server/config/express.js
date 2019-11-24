@@ -6,5 +6,8 @@ const secret = 'secret';
 module.exports = (app) => {
     app.use(cookieParser(secret));
     app.use(bodyParser.json());/*.urlencoded({ extended: false }));*/
-    app.use(cors());
+    app.use(cors({
+        origin: 'http://localhost:3000',
+        credentials: true
+    }));
 };

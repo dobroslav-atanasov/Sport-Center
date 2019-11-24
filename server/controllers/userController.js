@@ -23,12 +23,13 @@ module.exports = {
                 .then((user) => Promise.all([user, user.matchPassword(password)]))
                 .then(([user, match]) => {
                     if (!match) {
-                        res.status(401).send('Invalid password');
+                        // res.status(401).send('Invalid password');
+                        res.send('Invalid username or password!');
                         return;
                     }
 
                     const token = jwt.createToken({ id: user._id });
-                    res.cookie(config.authCookieName, token).send(user);
+                    res.cookie(config.authCookieName, token).send(token);
                 })
                 .catch(next);
         },
