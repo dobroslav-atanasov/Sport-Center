@@ -31,6 +31,14 @@ const userService = {
             },
             withCredentials: true
         }).then(res => res.data);
+    },
+
+    logout: function () {
+        return axios({
+            method: 'POST',
+            url: 'http://localhost:3333/api/user/logout',
+            withCredentials: true
+        }).then(res => res.data);
     }
 };
 

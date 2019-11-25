@@ -12,6 +12,7 @@ import Town from './components/Town';
 import Event from './components/Event';
 import User from './components/User';
 import userService from './services/userService';
+import Logout from './components/Logout';
 
 function render(Component, isLogged) {
   return function (props) {
@@ -42,7 +43,14 @@ class App extends React.Component {
       this.setState({ isLogged: true });
       history.push('/');
     });
-  }
+  };
+
+  logout = (history) => {
+    userService.logout().then(() => {
+      this.setState({ isLogged: false });
+      history.push('/');
+    });
+  };
 
   render() {
     const { isLogged } = this.state;
@@ -61,7 +69,8 @@ class App extends React.Component {
           <Route path="/about" render={render(About, { isLogged })} />
           <Route path="/add-town" render={render(Town, { isLogged })} />
           <Route path="/create-event" render={render(Event, { isLogged })} />
-          <Route path="/users" render={render(User, isLogged)} />
+          <Route path="/users" render={render(User, { isLogged })} />
+          <Route path="/logout" render={render(Logout, { isLogged, logout: this.logout })} />
           <Route component={NotFound} />
         </Switch>
       </Router>
