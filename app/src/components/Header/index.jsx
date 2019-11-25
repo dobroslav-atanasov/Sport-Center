@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({ isLogged }) => {
+function parseCookies() {
+    return document.cookie.split('; ').reduce((acc, cookie) => {
+        const [cookieName, cookieValue] = cookie.split('=');
+        acc[cookieName] = cookieValue;
+        return acc;
+    }, {});
+};
+
+const Header = () => {
+    const cookies = parseCookies();
+    const isLogged = !!cookies['x-auth-token'];
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-warning">
             <Link to="/" className="navbar-brand">Sport Data Center</Link>
