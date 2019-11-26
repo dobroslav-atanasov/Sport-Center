@@ -10,17 +10,17 @@ const About = () => {
                     <hr />
                     <div className="row">
                         <div className="col-md-4">
-                            <img src="Sport-1.jpg" className="img-fluid" alt="Sport-1" />
+                            <img src="Sport-Center.png" className="img-fluid" alt="Sport-1" />
 
                         </div>
                         <div className="col-md-8">
                             <h5>
-                                Sport Data Center is a web application for sport events around the world. Its purpose is to connect people with the same interests of sport and to allow them to join any event they wish.
+                                Sport Center is a web application for sport events around the world. Its purpose is to connect people with the same interests of sport and to allow them to join any event they wish.
                                 It is intended for organizations, which want to set a sport event, and for athletes, who want to join an event - both for professionals and amateurs.
                     </h5>
                             <br />
                             <h5>
-                                Sport Data Center eases the process of taking part of sport event and by that it provokes for the realization of young athletes.
+                                Sport Center eases the process of taking part of sport event and by that it provokes for the realization of young athletes.
                     </h5>
                         </div>
                     </div>

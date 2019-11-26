@@ -13,7 +13,6 @@ import Event from './components/Event';
 import User from './components/User';
 import userService from './services/userService';
 import Logout from './components/Logout';
-import jwt from 'jsonwebtoken';
 import { protectedRoute, isNotAuthed, isAuthed, isAdmin, authedRoute } from './components/hocs/privateRoutes';
 
 class App extends React.Component {
@@ -31,25 +30,6 @@ class App extends React.Component {
     let NotAuthedRoute = protectedRoute(['Admin'], isNotAuthed);
 
     return (
-      // <Router>
-      //          <div className="App">
-      //            <Header isLogged={isLogged} isSuperAdmin={isSuperAdmin}/>
-
-      //            <Footer />
-      //          </div>
-
-      //          <Switch>
-      //            <Route path="/" exact render={render(Home, { isLogged, isSuperAdmin })} />
-      //            <Route path="/login" render={render(Login, { isLogged, login: this.login })} />
-      //            <Route path="/register" render={render(Register, { isLogged })} />
-      //            <Route path="/about" render={render(About, { isLogged })} />
-      //            <Route path="/add-town" render={render(Town, { isLogged })} />
-      //            <Route path="/create-event" render={render(Event, { isLogged })} />
-      //            <Route path="/users" render={render(User, { isLogged })} />
-      //            <Route path="/logout" render={render(Logout, { isLogged, logout: this.logout })} />
-      //            <Route component={NotFound} />
-      //          </Switch>
-      //        </Router>
       <Router>
         <Route path="/" component={Header} />
         <Switch>
@@ -62,10 +42,7 @@ class App extends React.Component {
           <Route exact path="/create-event" render={AuthedRoute(Event)} />
           <Route component={NotFound} />
         </Switch>
-
-        {/* <ToastContainer hideProgressBar='true' pauseOnHover="false" /> */}
         <Route path="/" component={Footer} />
-
       </Router>
     );
   }

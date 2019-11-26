@@ -13,8 +13,8 @@ const Header = () => {
     const cookies = parseCookies();
     const isLogged = !!cookies['x-auth-token'];
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-warning">
-            <Link to="/" className="navbar-brand">Sport Data Center</Link>
+        <nav className="navbar navbar-expand-lg navbar-light bg-danger">            
+            <Link to="/" className="navbar-brand"><img src="Sport-Center.png" width={40}/> Sport Center</Link>
 
             <div class="collapse navbar-collapse">
                 {isLogged &&
