@@ -19,8 +19,8 @@ function authenticatedRoute(roles, inRole) {
             if (inRole()) {
                 return <Component {...rest} />;
             };
+            return <Redirect to="/login" />;
         };
-        return <Redirect to="/login" />;
     };
 };
 
