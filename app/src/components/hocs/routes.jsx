@@ -60,6 +60,15 @@ function isNotAuthenticated() {
     return !cookies['x-auth-token'];
 };
 
+function getUserInfo() {
+    const cookies = parseCookies();
+    if (cookies['x-auth-token'] !== undefined) {
+        const data = jwt.decode(cookies['x-auth-token']);
+        return data;
+    }
+    return undefined;
+};
+
 export default {
     protectedRoute,
     authenticatedRoute,

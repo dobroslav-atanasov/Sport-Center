@@ -67,6 +67,14 @@ function parseCookies() {
     }, {});
 };
 
+function getUserInfo() {
+    const cookies = parseCookies();
+    if (cookies['x-auth-token'] !== undefined) {
+        return jwt.decode(cookies['x-auth-token']);
+    }
+    return undefined;
+};
+
 export {
     isAuthed, isNotAuthed, protectedRoute, isAdmin, authedRoute
 }
