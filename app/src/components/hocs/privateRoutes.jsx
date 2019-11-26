@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 import { Redirect, Route } from 'react-router-dom'
+import jwt from 'jsonwebtoken';
 
+// const AdminRoute = protectedRoute(['Admin'], isAdmin);
 function protectedRoute(allowedRoles, inRole) {
     return function (WrappedComponent) {
         return function ({ role, ...rest }) {
@@ -34,12 +36,17 @@ function authedRoute(allowedRoles, inRole) {
 
 }
 function isAdmin() {
-    let roles = localStorage.getItem('roles');
-    if (!roles) {
-        return false;
+    // let roles = localStorage.getItem('roles');
+    // if (!roles) {
+    //     return false;
+    // }
+    // return roles.includes('SuperAdmin');
+    const cookies = parseCookies();
+    if (cookies['x-auth-token'] !== undefined) {
+        const data = jwt.decode(cookies['x-auth-token']);
+        return data.role === 'SuperAdmin';
     }
-    return roles.includes('Admin');
-
+    return false;
 }
 
 function isAuthed(Component) {
