@@ -58,11 +58,11 @@ class Login extends React.Component {
                                     </div>
                                     <input type="password" className="form-control" name="password" onChange={this.changeHandler} placeholder="Password" />
                                 </div>
-                                {this.state.errors.length > 0 && <div className="alert alert-danger">{this.state.errors}</div>}
+                                {this.state.errors.length > 0 && <div className="alert alert-warning">{this.state.errors}</div>}
 
                                 {/* SUBMIT */}
                                 <div class="form-group">
-                                    <button type="submit" className="btn btn-warning btn-block">Log In</button>
+                                    <button type="submit" className="btn btn-danger btn-block">Log In</button>
                                 </div>
                                 <p class="text-center">Don't have account? <Link to="/register">Create Account</Link></p>
                             </form>
