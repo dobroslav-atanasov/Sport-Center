@@ -32,7 +32,7 @@ const Event = () => {
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-warning btn-block">Create Event</button>
+                            <button type="submit" class="btn btn-danger btn-block">Create Event</button>
                         </div>
                     </form>
                 </article>

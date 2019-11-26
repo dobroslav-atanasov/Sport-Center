@@ -63,7 +63,7 @@ class Town extends React.Component {
                                     <input type="text" name="country" class="form-control" value={this.state.country} onChange={this.handleCountryName} placeholder="Country" />
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-warning btn-block">Add Town</button>
+                                    <button type="submit" class="btn btn-danger btn-block">Add Town</button>
                                 </div>
                             </form>
                         </article>
