@@ -26,10 +26,14 @@ const Header = () => {
                             <Link to="/add-town" className="nav-link">Add Town</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/create-event" className="nav-link">Create Event</Link>
-                        </li>
-                        <li className="nav-item active">
                             <Link to="/users" className="nav-link">Users</Link>
+                        </li>
+                    </ul>
+                }
+                {(user !== undefined && user.role === 'Admin') &&
+                    <ul class="navbar-nav mr-auto">
+                        <li className="nav-item active">
+                            <Link to="/create-event" className="nav-link">Create Event</Link>
                         </li>
                     </ul>
                 }
@@ -60,7 +64,7 @@ const Header = () => {
                     </ul>
                 }
             </div>
-        </nav>
+        </nav >
     )
 };
 
