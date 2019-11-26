@@ -1,19 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from './components/Login';
 import Register from './components/Register';
+import Login from './components/Login';
+import Logout from './components/Logout';
 import Home from './components/Home';
 import About from './components/About';
 import NotFound from './components/NotFound';
 import Town from './components/Town';
 import Event from './components/Event';
-import User from './components/User';
-import userService from './services/userService';
-import Logout from './components/Logout';
-import { protectedRoute, isNotAuthed, isAuthed, isAdmin, authedRoute } from './components/hocs/privateRoutes';
+import routes from './components/hocs/routes';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,21 +22,22 @@ class App extends React.Component {
   };
 
   render() {
-    const AdminRoute = protectedRoute(['Admin'], isAdmin);
-    const AuthedRoute = authedRoute(['Admin'], isAuthed);
-    const NotAuthedRoute = protectedRoute(['Admin'], isNotAuthed);
+    const superAdminRoute = routes.protectedRoute(['SuperAdmin'], routes.isSuperAdmin);
+    const adminRoute = routes.protectedRoute(['Admin'], routes.isAdmin);
+    const userRoute = routes.userRoute(['User'], routes.isAuthenticated);
+    const publicRoute = routes.protectedRoute(['User'], routes.isNotAuthenticated);
 
     return (
       <Router>
         <Route path="/" component={Header} />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/register" component={NotAuthedRoute(Register)} />
-          <Route exact path="/login" component={NotAuthedRoute(Login)} />
-          <Route exact path="/logout" component={AuthedRoute(Logout)} />
-          <Route exact path="/about" render={NotAuthedRoute(About)} />
-          <Route exact path="/add-town" render={AdminRoute(Town)} />
-          <Route exact path="/create-event" render={AuthedRoute(Event)} />
+          <Route exact path="/register" component={publicRoute(Register)} />
+          <Route exact path="/login" component={publicRoute(Login)} />
+          <Route exact path="/logout" component={userRoute(Logout)} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/add-town" component={superAdminRoute(Town)} />
+          <Route exact path="/create-event" component={adminRoute(Event)} />
           <Route component={NotFound} />
         </Switch>
         <Route path="/" component={Footer} />
