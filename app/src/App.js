@@ -37,7 +37,7 @@ class App extends React.Component {
           <Route exact path="/login" component={NotAuthedRoute(Login)} />
           <Route exact path="/logout" component={AuthedRoute(Logout)} />
           <Route exact path="/about" render={NotAuthedRoute(About)} />
-          <Route exact path="/add-town" render={AuthedRoute(Town)} />
+          <Route exact path="/add-town" render={AdminRoute(Town)} />
           <Route exact path="/create-event" render={AuthedRoute(Event)} />
           <Route component={NotFound} />
         </Switch>
