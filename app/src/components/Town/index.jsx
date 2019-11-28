@@ -1,6 +1,6 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import validationService from '../../services/validationService';
+import townService from '../../services/townService';
 
 class Town extends React.Component {
     constructor(props) {
@@ -8,69 +8,79 @@ class Town extends React.Component {
         this.state = {
             name: '',
             country: '',
-            redirect: false
+            errors: {
+                name: '',
+                country: ''
+            }
+        };
+    };
+
+    changeHandler = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        let errors = this.state.errors;
+
+        switch (name) {
+            case 'name':
+                errors.name = !validationService.townNameValidation(value)? 'Town should be at least 3 symbols long and contains only letters!' : '';
+                break;
+            case 'country':
+                errors.country = !validationService.countryNameValidation(value) ? 'Country should be at least 4 symbols long and contains only letters!' : '';
+                break;
+            default:
+                break;
         };
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleTownName = this.handleTownName.bind(this);
-        this.handleCountryName = this.handleCountryName.bind(this);
-    }
+        this.setState({ errors, [name]: value });
+    };
 
-    handleSubmit(e) {
-        e.preventDefault();
-
-        this.setState({ redirect: true });
-
-        axios.post(`http://localhost:3333/api/town/create`, {
-            name: this.state.name,
-            country: this.state.country
-        }).then(res => {
-            console.log(res);
-            console.log(res.data);
-        });
-    }
-
-    handleTownName(e) {
-        this.setState({ name: e.target.value });
-    }
-
-    handleCountryName(e) {
-        this.setState({ country: e.target.value });
-    }
+    submitHandler = (event) => {
+        event.preventDefault();
+        const data = this.state;
+        if (validationService.formValidation(this.state.errors)) {
+            townService.create(data).then(() => {
+                this.props.history.push('/');
+            });
+        }
+    };
 
     render() {
-        const redirect = this.state.redirect;
-
         return (
-            redirect ? <Redirect to="/" /> :
-                <div className="container">
-                    <br />
-                    <div className="card bg-light">
-                        <article className="card-body mx-auto">
-                            <h3 className="card-title mt-3 text-center">Add Town</h3>
-                            <hr />
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="form-group input-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text"><i className="fa fa-building"></i></span>
-                                    </div>
-                                    <input type="text" name="name" className="form-control" value={this.state.name} onChange={this.handleTownName} placeholder="Town" />
+            <div className="container">
+                <br />
+                <div className="card bg-light">
+                    <article className="card-body mx-auto">
+                        <h3 className="card-title mt-3 text-center">Add Town</h3>
+                        <hr />
+                        <form onSubmit={this.submitHandler}>
+                            {/* NAME */}
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"><i className="fa fa-building"></i></span>
                                 </div>
-                                <div className="form-group input-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text"> <i className="fa fa-globe"></i> </span>
-                                    </div>
-                                    <input type="text" name="country" class="form-control" value={this.state.country} onChange={this.handleCountryName} placeholder="Country" />
+                                <input type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Town" />
+                            </div>
+                            {this.state.errors.name.length > 0 && <div className="alert alert-warning">{this.state.errors.name}</div>}
+
+                            {/* COUNTRY */}
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-globe"></i> </span>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-danger btn-block">Add Town</button>
-                                </div>
-                            </form>
-                        </article>
-                    </div>
+                                <input type="text" className="form-control" name="country" onChange={this.changeHandler} placeholder="Country" />
+                            </div>
+                            {this.state.errors.country.length > 0 && <div className="alert alert-warning">{this.state.errors.country}</div>}
+
+                            {/* SUBMIT */}
+                            <div class="form-group">
+                                <button type="submit" className="btn btn-danger btn-block">Add Town</button>
+                            </div>
+                        </form>
+                    </article>
                 </div>
-        )
-    }
-}
+            </div>
+        );
+    };
+};
 
 export default Town;
