@@ -5,7 +5,7 @@ const eventService = {
         const { name, date, town } = data;
         return axios({
             method: 'POST',
-            url: 'http://localhost:3333/api/town/create',
+            url: 'http://localhost:3333/api/event/create',
             data: {
                 name,
                 date,

@@ -23,19 +23,19 @@ class Event extends React.Component {
         event.preventDefault();
         const { name, value } = event.target;
         let errors = this.state.errors;
-        switch (name) {
-            case 'name':
-                errors.name = value.length < 2 ? 'Event name should be at least 2 characters long!' : '';
-                break;
-            case 'date':
-                errors.date = value === undefined ? 'Date is required!' : '';
-                break;
-            case 'town':
-                errors.town = value !== this.state.password ? 'Passwords don\'t match!' : '';
-                break;
-            default:
-                break;
-        };
+        // switch (name) {
+        //     case 'name':
+        //         errors.name = value.length < 2 ? 'Event name should be at least 2 characters long!' : '';
+        //         break;
+        //     case 'date':
+        //         errors.date = value === undefined ? 'Date is required!' : '';
+        //         break;
+        //     case 'town':
+        //         errors.town = value !== this.state.password ? 'Passwords don\'t match!' : '';
+        //         break;
+        //     default:
+        //         break;
+        // };
 
         this.setState({ errors, [name]: value });
     };
@@ -43,6 +43,7 @@ class Event extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         const data = this.state;
+        console.log(data);
         if (validationService.formValidation(this.state.errors)) {
             eventService.create(data).then((data) => {
                 this.props.history.push('/');
@@ -66,7 +67,7 @@ class Event extends React.Component {
                     <article className="card-body mx-auto">
                         <h3 className="card-title mt-3 text-center">Create Event</h3>
                         <hr />
-                        <form>
+                        <form onSubmit={this.submitHandler}>
                             {/* NAME */}
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">
@@ -81,7 +82,7 @@ class Event extends React.Component {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"> <i className="fa fa-calendar"></i> </span>
                                 </div>
-                                <input type="date" className="form-control" name="date" />
+                                <input type="date" className="form-control" name="date" onChange={this.changeHandler} />
                             </div>
                             {errors.date.length > 0 && <div className="alert alert-warning">{errors.date}</div>}
 
@@ -90,9 +91,9 @@ class Event extends React.Component {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i className="fa fa-globe"></i></span>
                                 </div>
-                                <select className="form-control">
+                                <select className="form-control" name="town" onChange={this.changeHandler}>
                                     <option selected=""> Select Town</option>
-                                    {towns.map(t => <option>{t.name}</option>)}
+                                    {towns.map(t => <option key={t.name.toString()}>{t.name}</option>)}
                                 </select>
                             </div>
                             {errors.town.length > 0 && <div className="alert alert-warning">{errors.town}</div>}
