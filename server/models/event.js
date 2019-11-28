@@ -10,11 +10,11 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     town: {
-        type: ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Town'
     },
     result: {
-        type: ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Result'
     },
     users: [{
