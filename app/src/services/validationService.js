@@ -9,6 +9,14 @@ const validationService = {
         return valid;
     },
 
+    checkFiels: function(data) {
+        let valid = true;
+        Object.values(data).forEach(
+            (val) => val.length > 0 && (valid = false)
+        );
+        return valid;
+    },
+
     registerEmailValidation: function (value) {
         const regex = RegExp(/[\w]+@[a-z]+\.com/i);
         return regex.test(value);
