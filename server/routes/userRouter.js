@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
 
-router.get('/', userController.get)
+router.get('/', userController.get.getAllUsers);
+
+router.get('/usernames', userController.get.getUsernames);
 
 router.post('/register', userController.post.register);
 

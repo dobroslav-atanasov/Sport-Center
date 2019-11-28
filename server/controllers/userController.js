@@ -3,10 +3,21 @@ const config = require('../config/config');
 const jwt = require('../utils/jwt');
 
 module.exports = {
-    get: (req, res, next) => {
-        userModel.find()
-            .then((users) => res.send(users))
-            .catch(next)
+    get: {
+        getAllUsers: (req, res, next) => {
+            userModel.find()
+                .then((users) => res.send(users))
+                .catch(next)
+        },
+
+        getUsernames: (req, res, next) => {
+            userModel.find()
+                .then((users) => {
+                    const usernames = users.map(x => x.username);
+                    res.send(usernames);
+                })
+                .catch(next);
+        }
     },
 
     post: {

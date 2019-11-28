@@ -1,10 +1,12 @@
 const townModel = require('../models/town');
 
 module.exports = {
-    get: (req, res, next) => {
-        townModel.find()
-            .then(towns => res.send(towns))
-            .catch(next)
+    get: {
+        getAllTowns: (req, res, next) => {
+            townModel.find()
+                .then(towns => res.send(towns))
+                .catch(next);
+        }
     },
 
     post: {
@@ -12,7 +14,7 @@ module.exports = {
             const { name, country } = req.body;
             townModel.create({ name, country })
                 .then((town) => res.send(town))
-                .catch(next)
+                .catch(next);
         }
     }
-}
+};
