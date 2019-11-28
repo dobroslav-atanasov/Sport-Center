@@ -39,6 +39,13 @@ const userService = {
             url: 'http://localhost:3333/api/user/logout',
             withCredentials: true
         }).then(res => res.data);
+    },
+
+    getUsernames: function() {
+        return axios({
+            method: 'GET',
+            url: 'http://localhost:3333/api/user/usernames'
+        }).then(res => res.data);
     }
 };
 

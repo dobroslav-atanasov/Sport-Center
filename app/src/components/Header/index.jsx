@@ -6,7 +6,7 @@ const Header = () => {
     const user = authService.getUserInfo();
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-danger">
-            <Link to="/" className="navbar-brand"><img src="Sport-Center.png" width={40} /> Sport Center</Link>
+            <Link to="/" className="navbar-brand"><img src="Sport-Center.png" width={40} alt="Sport-Center" /> Sport Center</Link>
             <div class="collapse navbar-collapse">
                 {(user !== undefined && user.role === 'SuperAdmin') &&
                     <ul class="navbar-nav mr-auto">

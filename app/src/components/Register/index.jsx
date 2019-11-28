@@ -1,17 +1,7 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import validationService from '../../services/validationService';
 import userService from '../../services/userService';
-
-const formValidation = (errors) => {
-    let valid = true;
-    Object.values(errors).forEach(
-        (val) => val.length > 0 && (valid = false)
-    );
-
-    return valid;
-}
-
-const emailValidationRegex = RegExp(/[\w]+@[a-z]+\.com/i);
 
 class Register extends React.Component {
     constructor(props) {
@@ -42,9 +32,9 @@ class Register extends React.Component {
         event.preventDefault();
         const { name, value } = event.target;
         let errors = this.state.errors;
-
         switch (name) {
             case 'username':
+                //errors.username = !validationService.isUsernameExist(value) ? 'Username already exist' : '';
                 errors.username = value.length < 3 ? 'Username should be at least 3 characters long!' : '';
                 break;
             case 'password':
@@ -60,7 +50,7 @@ class Register extends React.Component {
                 errors.lastName = value.length === 0 ? 'Last name is required!' : '';
                 break;
             case 'email':
-                errors.email = !emailValidationRegex.test(value) ? 'Invalid email!' : '';
+                errors.email = !validationService.registerEmailValidation(value) ? 'Invalid email!' : '';
                 break;
             case 'age':
                 errors.age = value < 16 || value > 100 ? 'Age should be between 16 and 100!' : '';
@@ -75,8 +65,8 @@ class Register extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         const data = this.state;
-        if (formValidation(this.state.errors)) {
-            userService.register(data).then(() => {
+        if (validationService.formValidation(this.state.errors)) {
+            userService.register(data).then((data) => {
                 this.props.history.push('/login');
                 // this.setState({ isRedirect: true });
             });

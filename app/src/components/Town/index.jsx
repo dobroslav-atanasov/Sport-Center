@@ -45,6 +45,7 @@ class Town extends React.Component {
     };
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="container">
                 <br />
@@ -60,7 +61,7 @@ class Town extends React.Component {
                                 </div>
                                 <input type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Town" />
                             </div>
-                            {this.state.errors.name.length > 0 && <div className="alert alert-warning">{this.state.errors.name}</div>}
+                            {errors.name.length > 0 && <div className="alert alert-warning">{errors.name}</div>}
 
                             {/* COUNTRY */}
                             <div className="form-group input-group">
@@ -69,7 +70,7 @@ class Town extends React.Component {
                                 </div>
                                 <input type="text" className="form-control" name="country" onChange={this.changeHandler} placeholder="Country" />
                             </div>
-                            {this.state.errors.country.length > 0 && <div className="alert alert-warning">{this.state.errors.country}</div>}
+                            {errors.country.length > 0 && <div className="alert alert-warning">{errors.country}</div>}
 
                             {/* SUBMIT */}
                             <div class="form-group">

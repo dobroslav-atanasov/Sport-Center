@@ -1,3 +1,5 @@
+import userService from './userService';
+
 const validationService = {
     formValidation: function (errors) {
         let valid = true;
@@ -7,8 +9,9 @@ const validationService = {
         return valid;
     },
 
-    registerEmailValidation: function () {
-        return RegExp(/[\w]+@[a-z]+\.com/i);
+    registerEmailValidation: function (value) {
+        const regex = RegExp(/[\w]+@[a-z]+\.com/i);
+        return regex.test(value);
     },
 
     townNameValidation: function (value) {
@@ -19,6 +22,13 @@ const validationService = {
     countryNameValidation: function (value) {
         const regex = RegExp(/[A-Za-z]{4,}/i);
         return regex.test(value);
+    },
+
+    isUsernameExist:  function (username) {
+        userService.getUsernames()
+            .then(usernames => {
+                return usernames.includes(username);
+            });
     },
 };
 
