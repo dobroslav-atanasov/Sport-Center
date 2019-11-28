@@ -1,14 +1,16 @@
 import React from 'react';
 import validationService from '../../services/validationService';
 import eventService from '../../services/eventService';
+import townService from '../../services/townService';
 
 class Event extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             name: '',
             date: '',
             town: '',
+            towns: [],
             errors: {
                 name: '',
                 date: '',
@@ -48,8 +50,15 @@ class Event extends React.Component {
         }
     };
 
+    componentDidMount = () => {
+        townService.getTowns()
+            .then(towns => {
+                this.setState({ towns: towns });
+            });
+    };
+
     render() {
-        const { errors } = this.state;
+        const { errors, towns } = this.state;
         return (
             <div className="container">
                 <br />
@@ -83,8 +92,7 @@ class Event extends React.Component {
                                 </div>
                                 <select className="form-control">
                                     <option selected=""> Select Town</option>
-                                    <option>Sofia</option>
-                                    <option>Varna</option>
+                                    {towns.map(t => <option>{t.name}</option>)}
                                 </select>
                             </div>
                             {errors.town.length > 0 && <div className="alert alert-warning">{errors.town}</div>}

@@ -13,6 +13,15 @@ const townService = {
         }).then(res => {
             console.log(res.data);
         });
+    },
+
+    getTowns: function() {
+        return axios({
+            method: 'GET',
+            url: 'http://localhost:3333/api/town/',
+        }).then(res => {
+            return res.data;
+        });
     }
 };
 
