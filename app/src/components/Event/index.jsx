@@ -75,7 +75,7 @@ class Event extends React.Component {
                                 </div>
                                 <input type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Name" />
                             </div>
-                            {errors.name.length > 0 && <div className="alert alert-warning">{errors.name}</div>}
+                            {errors.name.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.name}</div>}
 
                             {/* DATE */}
                             <div className="form-group input-group">
@@ -84,7 +84,7 @@ class Event extends React.Component {
                                 </div>
                                 <input type="date" className="form-control" name="date" onChange={this.changeHandler} />
                             </div>
-                            {errors.date.length > 0 && <div className="alert alert-warning">{errors.date}</div>}
+                            {errors.date.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.date}</div>}
 
                             {/* TOWN */}
                             <div className="form-group input-group">
@@ -96,7 +96,7 @@ class Event extends React.Component {
                                     {towns.map(t => <option key={t.name.toString()}>{t.name}</option>)}
                                 </select>
                             </div>
-                            {errors.town.length > 0 && <div className="alert alert-warning">{errors.town}</div>}
+                            {errors.town.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.town}</div>}
 
                             {/* SUBMIT */}
                             <div class="form-group">
