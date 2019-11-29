@@ -13,8 +13,8 @@ class Event extends React.Component {
             towns: [],
             errors: {
                 name: '',
-                date: '',
-                town: ''
+                date: 'Date is required!',
+                town: 'Town is required!'
             }
         };
     };
@@ -23,19 +23,19 @@ class Event extends React.Component {
         event.preventDefault();
         const { name, value } = event.target;
         let errors = this.state.errors;
-        // switch (name) {
-        //     case 'name':
-        //         errors.name = value.length < 2 ? 'Event name should be at least 2 characters long!' : '';
-        //         break;
-        //     case 'date':
-        //         errors.date = value === undefined ? 'Date is required!' : '';
-        //         break;
-        //     case 'town':
-        //         errors.town = value !== this.state.password ? 'Passwords don\'t match!' : '';
-        //         break;
-        //     default:
-        //         break;
-        // };
+        switch (name) {
+            case 'name':
+                errors.name = value.length < 2 ? 'Event name should be at least 2 characters long!' : '';
+                break;
+            case 'date':
+                errors.date = value === undefined ? 'Date is required!' : '';
+                break;
+            case 'town':
+                errors.town = value === 'Select Town' ? 'Town is required!' : '';
+                break;
+            default:
+                break;
+        };
 
         this.setState({ errors, [name]: value });
     };
