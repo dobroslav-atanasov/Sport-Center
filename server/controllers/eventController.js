@@ -1,4 +1,5 @@
 const eventModel = require('../models/event');
+const townModel = require('../models/town');
 
 module.exports = {
     // get: {
@@ -12,9 +13,12 @@ module.exports = {
     post: {
         create: (req, res, next) => {
             const { name, date, town } = req.body;
-            eventModel.create({ name, date })
+            townModel.findOne({name: town}).then(t => {
+                const townId = t.id;
+                eventModel.create({ name, date, town: townId })
                 .then((event) => res.send(event))
                 .catch(next);
+            });
         }
     }
 };
