@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Register from './components/Register';
-import Login from './components/Login';
-import Logout from './components/Logout';
-import Home from './components/Home';
-import About from './components/About';
-import NotFound from './components/NotFound';
-import Town from './components/Town';
-import Event from './components/Event';
-import routes from './components/hocs/routes';
+import Header from '../Header';
+import Footer from '../Footer';
+import Register from '../User/Register';
+import Login from '../User/Login';
+import Logout from '../User/Logout';
+import Home from '../Home';
+import About from '../About';
+import NotFound from '../NotFound';
+import Town from '../Town';
+import Event from '../Event';
+import routes from '../hocs/routes';
 
 class App extends React.Component {
   constructor(props) {

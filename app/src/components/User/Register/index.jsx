@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import validationService from '../../services/validationService';
-import userService from '../../services/userService';
+import validationService from '../../../services/validationService';
+import userService from '../../../services/userService';
 
 class Register extends React.Component {
     constructor(props) {
