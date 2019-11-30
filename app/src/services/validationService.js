@@ -9,7 +9,7 @@ const validationService = {
         return valid;
     },
 
-    checkFiels: function(data) {
+    checkFiels: function (data) {
         let valid = true;
         Object.values(data).forEach(
             (val) => val.length > 0 && (valid = false)
@@ -37,7 +37,11 @@ const validationService = {
         return regex.test(value);
     },
 
-    isUsernameExist:  function (username) {
+    imageUrlValidation: function (value) {
+        return value.startsWith('http') || value.startsWith('https');
+    },
+
+    isUsernameExist: function (username) {
         userService.getUsernames()
             .then(usernames => {
                 return usernames.includes(username);

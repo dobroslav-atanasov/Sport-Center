@@ -2,13 +2,14 @@ import axios from 'axios';
 
 const townService = {
     create: function (data) {
-        const { name, country } = data;
+        const { name, country, imageUrl } = data;
         return axios({
             method: 'POST',
             url: 'http://localhost:3333/api/town/create',
             data: {
                 name,
-                country
+                country,
+                imageUrl
             }
         }).then(res => {
             console.log(res.data);
