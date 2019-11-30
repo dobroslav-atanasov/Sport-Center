@@ -1,9 +1,9 @@
 import React from 'react';
-import validationService from '../../services/validationService';
-import eventService from '../../services/eventService';
-import townService from '../../services/townService';
+import validationService from '../../../services/validationService';
+import eventService from '../../../services/eventService';
+import townService from '../../../services/townService';
 
-class Event extends React.Component {
+class CreateEvent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -110,4 +110,4 @@ class Event extends React.Component {
     };
 };
 
-export default Event;
+export default CreateEvent;

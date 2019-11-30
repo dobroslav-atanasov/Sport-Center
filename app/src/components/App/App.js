@@ -9,7 +9,7 @@ import Home from '../Home';
 import About from '../About';
 import NotFound from '../NotFound';
 import Town from '../Town';
-import Event from '../Event';
+import CreateEvent from '../Event/CreateEvent';
 import routes from '../hocs/routes';
 
 class App extends React.Component {
@@ -36,7 +36,7 @@ class App extends React.Component {
           <Route exact path="/logout" component={userRoute(Logout)} />
           <Route exact path="/about" component={About} />
           <Route exact path="/add-town" component={superAdminRoute(Town)} />
-          <Route exact path="/create-event" component={adminRoute(Event)} />
+          <Route exact path="/create-event" component={adminRoute(CreateEvent)} />
           <Route component={NotFound} />
         </Switch>
         <Route path="/" component={Footer} />
