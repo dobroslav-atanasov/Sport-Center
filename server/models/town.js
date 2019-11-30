@@ -8,6 +8,10 @@ const townSchema = new mongoose.Schema({
     country: {
         type: String,
         required: true
+    },
+    imageUrl: {
+        type: String,
+        required: true
     }
 });
 
