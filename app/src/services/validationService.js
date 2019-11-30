@@ -27,6 +27,11 @@ const validationService = {
         return regex.test(value);
     },
 
+    userNamesValidation: function (value) {
+        const regex = RegExp(/[A-Za-z]{2,}/i);
+        return regex.test(value);
+    },
+
     countryNameValidation: function (value) {
         const regex = RegExp(/[A-Za-z]{4,}/i);
         return regex.test(value);
