@@ -1,4 +1,5 @@
 import React from 'react';
+import MappleToolTip from 'reactjs-mappletooltip';
 import validationService from '../../../services/validationService';
 import eventService from '../../../services/eventService';
 import townService from '../../../services/townService';
@@ -12,7 +13,7 @@ class CreateEvent extends React.Component {
             town: '',
             towns: [],
             errors: {
-                name: '',
+                name: 'Event name is required!',
                 date: 'Date is required!',
                 town: 'Town is required!'
             }
@@ -69,34 +70,61 @@ class CreateEvent extends React.Component {
                         <hr />
                         <form onSubmit={this.submitHandler}>
                             {/* NAME */}
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"><i className="fa fa-etsy"></i></span>
+                            <div className="row">
+                                <div className="col-md-10">
+                                    <div className="form-group input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text"><i className="fa fa-etsy"></i></span>
+                                        </div>
+                                        <input type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Name" />
+                                    </div>
                                 </div>
-                                <input type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Name" />
+                                <div className="col-md-2">
+                                    {errors.name.length === 0
+                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Event name is correct!</div></MappleToolTip>
+                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.name}</div></MappleToolTip>}
+                                </div>
                             </div>
-                            {errors.name.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.name}</div>}
+                            {/* {errors.name.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.name}</div>} */}
 
                             {/* DATE */}
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"> <i className="fa fa-calendar"></i> </span>
+                            <div className="row">
+                                <div className="col-md-10">
+                                    <div className="form-group input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text"> <i className="fa fa-calendar"></i> </span>
+                                        </div>
+                                        <input type="date" className="form-control" name="date" onChange={this.changeHandler} />
+                                    </div>
                                 </div>
-                                <input type="date" className="form-control" name="date" onChange={this.changeHandler} />
+                                <div className="col-md-2">
+                                    {errors.date.length === 0
+                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Date is correct!</div></MappleToolTip>
+                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.date}</div></MappleToolTip>}
+                                </div>
                             </div>
-                            {errors.date.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.date}</div>}
+                            {/* {errors.date.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.date}</div>} */}
 
                             {/* TOWN */}
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"><i className="fa fa-globe"></i></span>
+                            <div className="row">
+                                <div className="col-md-10">
+                                    <div className="form-group input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text"><i className="fa fa-globe"></i></span>
+                                        </div>
+                                        <select className="form-control" name="town" onChange={this.changeHandler}>
+                                            <option selected=""> Select Town</option>
+                                            {towns.map(t => <option key={t.toString()}>{t}</option>)}
+                                        </select>
+                                    </div>
                                 </div>
-                                <select className="form-control" name="town" onChange={this.changeHandler}>
-                                    <option selected=""> Select Town</option>
-                                    {towns.map(t => <option key={t.name.toString()}>{t.name}</option>)}
-                                </select>
+                                <div className="col-md-2">
+                                    {errors.town.length === 0
+                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Town is correct!</div></MappleToolTip>
+                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.town}</div></MappleToolTip>}
+                                </div>
                             </div>
-                            {errors.town.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.town}</div>}
+                            {/* {errors.town.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.town}</div>} */}
 
                             {/* SUBMIT */}
                             <div class="form-group">

@@ -31,6 +31,7 @@ class Login extends React.Component {
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="container">
                 <br />
@@ -54,7 +55,7 @@ class Login extends React.Component {
                                 </div>
                                 <input type="password" className="form-control" name="password" onChange={this.changeHandler} placeholder="Password" />
                             </div>
-                            {this.state.errors.length > 0 && <div className="alert alert-warning">{this.state.errors}</div>}
+                            {errors.length > 0 && <div className="alert alert-danger"><i className="fa fa-exclamation-triangle"></i> {errors}</div>}
 
                             {/* SUBMIT */}
                             <div class="form-group">
