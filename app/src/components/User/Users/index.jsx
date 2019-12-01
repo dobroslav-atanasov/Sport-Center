@@ -38,13 +38,35 @@ class Users extends React.Component {
             });
     };
 
+    searchUsers = (event) => {
+        event.preventDefault();
+        const { users } = this.state;
+        const search = event.target.value.toLowerCase();
+        if (search === '') {
+            userService.getAllUsers()
+                .then(users => {
+                    this.setState({ users: users });
+                });
+        } else {
+            const result = users.filter(x => x.username.toLowerCase().includes(search));
+            this.setState({ users: result });
+        }
+    };
+
     render() {
         const { users } = this.state;
         return (
             <div className="container">
-                <br />
-
-                <div>Search</div>
+                <div className="row" style={{ marginBottom: 20, marginTop: 30 }}>
+                    <div className="col-md-4 offset-md-4">
+                        <div className="form-group input-group">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input className="form-control mr-sm-2" type="search" name="search" onChange={this.searchUsers} placeholder="Search" />
+                        </div>
+                    </div>
+                </div>
 
                 <table className="table table-bordered table-striped">
                     <thead className="thead-dark">
