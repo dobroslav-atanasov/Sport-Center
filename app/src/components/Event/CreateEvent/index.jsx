@@ -10,11 +10,13 @@ class CreateEvent extends React.Component {
         this.state = {
             name: '',
             date: '',
+            description: '',
             town: '',
             towns: [],
             errors: {
                 name: 'Event name is required!',
                 date: 'Date is required!',
+                description: 'Description is required!',
                 town: 'Town is required!'
             }
         };
@@ -31,6 +33,9 @@ class CreateEvent extends React.Component {
             case 'date':
                 errors.date = value === undefined ? 'Date is required!' : '';
                 break;
+            case 'description':
+                errors.description = !validationService.eventDescriptionValidation(value) ? 'Description should be at least 50 symbols and contains only letters, digits and special symbols /.,!?()/!' : '';
+                break;
             case 'town':
                 errors.town = value === 'Select Town' ? 'Town is required!' : '';
                 break;
@@ -44,7 +49,6 @@ class CreateEvent extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         const data = this.state;
-        console.log(data);
         if (validationService.formValidation(this.state.errors)) {
             eventService.create(data).then((data) => {
                 this.props.history.push('/');
@@ -104,6 +108,23 @@ class CreateEvent extends React.Component {
                                 </div>
                             </div>
                             {/* {errors.date.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.date}</div>} */}
+
+                            {/* DESCRIPTION */}
+                            <div className="row">
+                                <div className="col-md-10">
+                                    <div className="form-group input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text"> <i class="fa fa-text-height"></i> </span>
+                                        </div>
+                                        <textarea className="form-control" rows="7" name="description" onChange={this.changeHandler} />
+                                    </div>
+                                </div>
+                                <div className="col-md-2">
+                                    {errors.description.length === 0
+                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Description is correct!</div></MappleToolTip>
+                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.description}</div></MappleToolTip>}
+                                </div>
+                            </div>
 
                             {/* TOWN */}
                             <div className="row">

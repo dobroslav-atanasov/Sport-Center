@@ -43,6 +43,9 @@ class Users extends React.Component {
         return (
             <div className="container">
                 <br />
+
+                <div>Search</div>
+
                 <table className="table table-bordered table-striped">
                     <thead className="thead-dark">
                         <tr>
@@ -54,12 +57,6 @@ class Users extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {users.map(u => <User
-                            username={u.username}
-                            firstName={u.firstName}
-                            lastName={u.lastName}
-                            role={u.role}
-                            history={history} />)} */}
                         {users.map(u => <tr>
                             <td className="text-center align-middle" key={u.username}>{u.username}</td>
                             <td className="text-center align-middle" key={u.firstName.toString() + u.lastName.toString()}>{u.firstName} {u.lastName}</td>
