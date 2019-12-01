@@ -56,18 +56,47 @@ module.exports = {
         }
     },
 
-    put: (req, res, next) => {
-        const id = req.params.id;
-        const { username, password } = req.body;
-        userModel.update({ _id: id }, { username, password })
-            .then((updatedUser) => res.send(updatedUser))
-            .catch(next)
+    delete: {
+        deleteUser: (req, res, next) => {
+            const { username } = req.body;
+            userModel.findOne({ username: username })
+                .then(user => {
+                    userModel.deleteOne({ _id: user.id })
+                        .then((removeUser) => {
+                            res.send(removeUser);
+                        })
+                        .catch(next);
+                });
+        }
     },
 
-    delete: (req, res, next) => {
-        const id = req.params.id;
-        userModel.deleteOne({ _id: id })
-            .then((removedUser) => res.send(removedUser))
-            .catch(next)
+    put: {
+        changeRole: (req, res, next) => {
+            const { username } = req.body;
+            userModel.findOne({ username: username })
+                .then(user => {
+                    const newRole = user.role === 'Admin' ? 'User' : 'Admin';
+                    userModel.findOneAndUpdate({ username: username }, { role: newRole })
+                        .then(updateUser => {
+                            res.send(updateUser);
+                        })
+                        .catch(next);
+                });
+        }
     }
+
+    // put: (req, res, next) => {
+    //     const id = req.params.id;
+    //     const { username, password } = req.body;
+    //     userModel.update({ _id: id }, { username, password })
+    //         .then((updatedUser) => res.send(updatedUser))
+    //         .catch(next)
+    // },
+
+    // delete: (req, res, next) => {
+    //     const id = req.params.id;
+    //     userModel.deleteOne({ _id: id })
+    //         .then((removedUser) => res.send(removedUser))
+    //         .catch(next)
+    // }
 };

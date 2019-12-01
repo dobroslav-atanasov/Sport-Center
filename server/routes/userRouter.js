@@ -11,8 +11,10 @@ router.post('/login', userController.post.login);
 
 router.post('/logout', userController.post.logout);
 
-router.put('/:id', userController.put);
+// router.put('/:id', userController.put);
 
-router.delete('/:id', userController.delete);
+router.delete('/delete-user', userController.delete.deleteUser);
+
+router.put('/change-role', userController.put.changeRole);
 
 module.exports = router;
