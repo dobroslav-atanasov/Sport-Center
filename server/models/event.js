@@ -9,6 +9,10 @@ const eventSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
     town: {
         type: mongoose.Types.ObjectId,
         ref: 'Town'
