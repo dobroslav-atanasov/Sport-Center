@@ -6,7 +6,10 @@ module.exports = {
     get: {
         getAllUsers: (req, res, next) => {
             userModel.find()
-                .then((users) => res.send(users))
+                .then((users) => {
+                    const u = users.filter(u => u.role !== 'SuperAdmin');
+                    res.send(u);
+                })
                 .catch(next)
         },
 
