@@ -47,6 +47,11 @@ const validationService = {
                 return usernames.includes(username);
             });
     },
+
+    eventDescriptionValidation: function (value) {
+        const regex = RegExp(/[A-Za-z0-9.!?,())\s]{50,}/i);
+        return regex.test(value);
+    },
 };
 
 export default validationService;
