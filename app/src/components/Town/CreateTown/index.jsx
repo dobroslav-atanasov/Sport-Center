@@ -57,13 +57,12 @@ class Town extends React.Component {
         }
     };
 
-    componentDidMount = () => {
+    componentWillMount = () => {
         townService.getTowns()
             .then(towns => {
-                console.log(towns);
                 this.setState({ towns: towns });
-            });;
-    }
+            });
+    };
 
     render() {
         const { errors } = this.state;

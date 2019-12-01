@@ -11,6 +11,7 @@ import NotFound from '../NotFound';
 import CreateTown from '../Town/CreateTown';
 import CreateEvent from '../Event/CreateEvent';
 import routes from '../hocs/routes';
+import Users from '../User/Users';
 
 class App extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends React.Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/add-town" component={superAdminRoute(CreateTown)} />
           <Route exact path="/create-event" component={adminRoute(CreateEvent)} />
+          <Route exact path="/users" component={superAdminRoute(Users)} />
           <Route component={NotFound} />
         </Switch>
         <Route path="/" component={Footer} />

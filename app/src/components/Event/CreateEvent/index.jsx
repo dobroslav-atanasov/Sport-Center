@@ -52,7 +52,7 @@ class CreateEvent extends React.Component {
         }
     };
 
-    componentDidMount = () => {
+    componentWillMount = () => {
         townService.getTowns()
             .then(towns => {
                 this.setState({ towns: towns });

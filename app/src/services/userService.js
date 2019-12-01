@@ -21,7 +21,7 @@ const userService = {
     },
 
     login: function (data) {
-        const {username, password} = data;
+        const { username, password } = data;
         return axios({
             method: 'POST',
             url: 'http://localhost:3333/api/user/login',
@@ -41,10 +41,37 @@ const userService = {
         }).then(res => res.data);
     },
 
-    getUsernames: function() {
+    getUsernames: function () {
         return axios({
             method: 'GET',
             url: 'http://localhost:3333/api/user/usernames'
+        }).then(res => res.data);
+    },
+
+    getAllUsers: function () {
+        return axios({
+            method: 'GET',
+            url: 'http://localhost:3333/api/user/all-users'
+        }).then(res => res.data);
+    },
+
+    deleteUser: function (username) {
+        return axios({
+            method: 'DELETE',
+            url: 'http://localhost:3333/api/user/delete-user',
+            data: {
+                username
+            }
+        }).then(res => res.data);
+    },
+
+    changeRole: function (username) {
+        return axios({
+            method: 'PUT',
+            url: 'http://localhost:3333/api/user/change-role',
+            data: {
+                username
+            }
         }).then(res => res.data);
     }
 };
