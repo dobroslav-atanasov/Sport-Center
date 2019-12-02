@@ -70,7 +70,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 # Sport Center
 
-One Paragraph of project description goes here
+Sport Center is a web application for sport events around the world.
 
 ### Installing
 
