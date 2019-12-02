@@ -7,6 +7,13 @@ module.exports = {
             eventModel.find({}).populate('town')
                 .then(events => res.send(events))
                 .catch(next);
+        },
+
+        getMyEvents: (res, res, next) => {
+            const { creatorId } = req.body;
+            eventModel.find({ creatorId: creatorId })
+                .then(events => res.send(events))
+                .catch(next);
         }
     },
 
