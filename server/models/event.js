@@ -17,6 +17,10 @@ const eventSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Town'
     },
+    creatorId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    },
     result: {
         type: mongoose.Types.ObjectId,
         ref: 'Result'
