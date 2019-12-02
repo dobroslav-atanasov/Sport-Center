@@ -2,12 +2,13 @@ import axios from 'axios';
 
 const eventService = {
     create: function (data, creatorId) {
-        const { name, date, description, town } = data;
+        const { name, location, date, description, town } = data;
         return axios({
             method: 'POST',
             url: 'http://localhost:3333/api/event/create',
             data: {
                 name,
+                location,
                 date,
                 description,
                 town,
