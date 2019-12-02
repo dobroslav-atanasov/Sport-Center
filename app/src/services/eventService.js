@@ -33,6 +33,16 @@ const eventService = {
                 id
             }
         }).then(res => res.data);
+    },
+
+    getMyEvents: function (creatorId) {
+        return axios({
+            method: 'GET',
+            url: 'http://localhost:3333/api/event/get-my-events',
+            data: {
+                creatorId
+            }
+        }).then(res => res.data);
     }
 };
 
