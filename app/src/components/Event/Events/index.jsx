@@ -57,7 +57,7 @@ class Events extends React.Component {
                     </div>
                 </div>
 
-                <table className="table table-bordered table-striped">
+                <table className="table table-bordered table-striped" style={{marginBottom: 50}}>
                     <thead className="thead-dark">
                         <tr>
                             <th className="text-center">Event</th>

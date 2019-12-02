@@ -57,7 +57,7 @@ class Users extends React.Component {
         const { users } = this.state;
         return (
             <div className="container">
-                <div className="row" style={{ marginBottom: 20, marginTop: 30 }}>
+                <div className="row" style={{ marginTop: 30, marginBottom: 50 }}>
                     <div className="col-md-4 offset-md-4">
                         <div className="form-group input-group">
                             <div className="input-group-prepend">

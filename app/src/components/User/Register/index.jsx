@@ -39,7 +39,7 @@ class Register extends React.Component {
             case 'username':
                 if (this.state.usernames.includes(value)) {
                     errors.username = 'Username already exist';
-                } else if (value.length < 3){
+                } else if (value.length < 3) {
                     errors.username = 'Username should be at least 3 characters long!';
                 } else {
                     errors.username = '';
@@ -95,8 +95,7 @@ class Register extends React.Component {
         const { errors } = this.state;
         return (
             // this.state.isRedirect ? <Redirect to="/login" /> :
-            <div className="container">
-                <br />
+            <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
                 <div className="card bg-light">
                     <article className="card-body mx-auto">
                         <h3 className="card-title mt-3 text-center">Create Account</h3>

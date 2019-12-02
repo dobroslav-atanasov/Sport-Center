@@ -67,8 +67,7 @@ class Town extends React.Component {
     render() {
         const { errors } = this.state;
         return (
-            <div className="container">
-                <br />
+            <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
                 <div className="card bg-light">
                     <article className="card-body mx-auto">
                         <h3 className="card-title mt-3 text-center">Add Town</h3>

@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 const NotFount = () => {
     return (
         <Fragment>
-            <div className="text-center">
+            <div className="text-center" style={{ marginTop: 30, marginBottom: 50 }}>
                 <img src="NotFound.png" className="img-fluid" alt="Not Found"></img>
             </div>
             <div className="text-center">
@@ -14,7 +14,7 @@ const NotFount = () => {
                 </Link>
             </div>
         </Fragment>
-    )
+    );
 };
 
 export default NotFount;

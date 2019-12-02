@@ -26,8 +26,7 @@ class Home extends React.Component {
             <Fragment>
                 {user === undefined &&
                     <Fragment>
-                        <br />
-                        <div className="container">
+                        <div className="container" style={{marginTop: 30, marginBottom: 50}}>
                             <div className="row align-items-center">
                                 <div className="col-md">
                                     <div className="card" style={{ width: 350 }}>

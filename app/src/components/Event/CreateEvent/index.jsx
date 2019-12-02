@@ -66,8 +66,7 @@ class CreateEvent extends React.Component {
     render() {
         const { errors, towns } = this.state;
         return (
-            <div className="container">
-                <br />
+            <div className="container" style={{ marginBottom: 50, marginTop: 30 }}>
                 <div className="card bg-light">
                     <article className="card-body mx-auto">
                         <h3 className="card-title mt-3 text-center">Create Event</h3>
