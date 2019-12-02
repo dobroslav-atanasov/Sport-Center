@@ -21,16 +21,15 @@ class Home extends React.Component {
     render() {
         const user = authService.getUserInfo();
         const { events } = this.state;
-        console.log(events);
         return (
             <Fragment>
                 {user === undefined &&
                     <Fragment>
-                        <div className="container" style={{marginTop: 30, marginBottom: 50}}>
+                        <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
                             <div className="row align-items-center">
                                 <div className="col-md">
                                     <div className="card" style={{ width: 350 }}>
-                                        <img src="Sport-2.jpg" className="card-img-top" alt="sport-2"/>
+                                        <img src="Sport-2.jpg" className="card-img-top" alt="sport-2" />
                                         <div className="card-body">
                                             <h5 className="card-title">Card title</h5>
                                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -61,9 +60,10 @@ class Home extends React.Component {
                 }
                 {user !== undefined &&
                     <Fragment>
-                        <div className="container" style={{marginTop: 30, marginBottom: 50}}>
+                        <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
                             <div className="row align-items-center">
-                                {events.map(e => <EventCard name={e.name}
+                                {events.map(e => <EventCard id={e._id}
+                                    name={e.name}
                                     description={e.description}
                                     location={e.location}
                                     town={e.town.name}

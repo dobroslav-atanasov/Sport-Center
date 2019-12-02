@@ -44,7 +44,14 @@ const eventService = {
                 creatorId
             }
         }).then(res => res.data);
-    }
+    },
+
+    getEvent: function (id) {
+        return axios({
+            method: 'GET',
+            url: `http://localhost:3333/api/event/get-event/${id}`
+        }).then(res => res.data);
+    },
 };
 
 export default eventService;

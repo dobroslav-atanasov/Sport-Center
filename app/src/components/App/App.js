@@ -14,6 +14,7 @@ import routes from '../hocs/routes';
 import Users from '../User/Users';
 import Events from '../Event/Events';
 import MyEvents from '../Event/MyEvents';
+import Event from '../Event/Event';
 
 class App extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends React.Component {
           <Route exact path="/users" component={superAdminRoute(Users)} />
           <Route exact path="/events" component={superAdminRoute(Events)} />
           <Route exact path="/my-events" component={adminRoute(MyEvents)} />
+          <Route exact path="/event/:id" component={userRoute(Event)} />
           <Route component={NotFound} />
         </Switch>
         <Route path="/" component={Footer} />

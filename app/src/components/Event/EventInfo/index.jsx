@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const EventCard = ({ id, name, location, description, imageUrl, town, date, participants }) => {
+const EventInfo = ({ id, name, location, description, imageUrl, town, date, participants }) => {
 
     return (
         <div className="col-md" style={{ marginBottom: 30 }}>
@@ -30,4 +30,4 @@ const EventCard = ({ id, name, location, description, imageUrl, town, date, part
     );
 };
 
-export default EventCard;
+export default EventInfo;
