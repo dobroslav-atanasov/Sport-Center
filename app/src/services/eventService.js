@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const eventService = {
-    create: function (data) {
+    create: function (data, creatorId) {
         const { name, date, description, town } = data;
         return axios({
             method: 'POST',
@@ -11,6 +11,7 @@ const eventService = {
                 date,
                 description,
                 town,
+                creatorId
             }
         }).then(res => {
             console.log(res.data);

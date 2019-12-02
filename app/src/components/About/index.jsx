@@ -2,8 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div className="container">
-            <br />
+        <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
             <div className="card bg-light">
                 <article className="card-body mx-auto">
                     <h2 className="card-title mt-3 text-center">About Us</h2>

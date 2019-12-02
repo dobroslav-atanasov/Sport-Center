@@ -3,6 +3,7 @@ import MappleToolTip from 'reactjs-mappletooltip';
 import validationService from '../../../services/validationService';
 import eventService from '../../../services/eventService';
 import townService from '../../../services/townService';
+import authService from '../../../services/authService';
 
 class CreateEvent extends React.Component {
     constructor(props) {
@@ -49,8 +50,9 @@ class CreateEvent extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         const data = this.state;
+        const creatorId = authService.getUserInfo().id;
         if (validationService.formValidation(this.state.errors)) {
-            eventService.create(data).then((data) => {
+            eventService.create(data, creatorId).then((data) => {
                 this.props.history.push('/');
             });
         }

@@ -26,6 +26,9 @@ const Header = () => {
                         <li className="nav-item active">
                             <Link to="/create-event" className="nav-link">Create Event</Link>
                         </li>
+                        <li className="nav-item active">
+                            <Link to="/add-results" className="nav-link">Add Results</Link>
+                        </li>
                     </ul>
                 }
                 {(user !== undefined && user.role === 'User') &&
