@@ -61,10 +61,11 @@ class Home extends React.Component {
                 }
                 {user !== undefined &&
                     <Fragment>
-                        <div className="container" style={{marginTop: 30}}>
+                        <div className="container" style={{marginTop: 30, marginBottom: 50}}>
                             <div className="row align-items-center">
                                 {events.map(e => <EventCard name={e.name}
                                     description={e.description}
+                                    location={e.location}
                                     town={e.town.name}
                                     imageUrl={e.town.imageUrl}
                                     date={e.date}

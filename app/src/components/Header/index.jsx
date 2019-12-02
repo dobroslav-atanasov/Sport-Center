@@ -27,7 +27,7 @@ const Header = () => {
                             <Link to="/create-event" className="nav-link">Create Event</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/add-results" className="nav-link">Add Results</Link>
+                            <Link to="/my-events" className="nav-link">My Events</Link>
                         </li>
                     </ul>
                 }

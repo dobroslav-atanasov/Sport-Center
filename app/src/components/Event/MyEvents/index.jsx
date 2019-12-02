@@ -2,7 +2,7 @@ import React from 'react';
 import eventService from '../../../services/eventService';
 import authService from '../../../services/authService';
 
-class Results extends React.Component {
+class MyEvents extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,6 +17,23 @@ class Results extends React.Component {
                 const filterEvents = events.filter(x => x.creatorId === creatorId);
                 this.setState({ events: filterEvents });
             });
+    };
+
+    searchEvents = (event) => {
+        event.preventDefault();
+        const { events } = this.state;
+        const creatorId = authService.getUserInfo().id;
+        const search = event.target.value.toLowerCase();
+        if (search === '') {
+            eventService.getAllEvents()
+                .then(events => {
+                    const filterEvents = events.filter(x => x.creatorId === creatorId);
+                    this.setState({ events: filterEvents });
+                });
+        } else {
+            const result = events.filter(x => x.name.toLowerCase().includes(search));
+            this.setState({ events: result });
+        }
     };
 
     render() {
@@ -40,7 +57,7 @@ class Results extends React.Component {
                             <th className="text-center">Event</th>
                             <th className="text-center">Date</th>
                             <th className="text-center">Town</th>
-                            <th className="text-center">Delete Event</th>
+                            <th className="text-center">Add Results</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,8 +66,8 @@ class Results extends React.Component {
                             <td className="text-center align-middle" key={e.date.toString()}>{new Date(e.date).getDate()}-{new Date(e.date).getMonth() + 1}-{new Date(e.date).getFullYear()}</td>
                             <td className="text-center align-middle" key={e.town.name.toString()}>{e.town.name}</td>
                             <td className="text-center align-middle" key={e.name.toString() + e.town.name.toString()}>
-                                <button className="btn btn-danger btn-sm" id={e._id} onClick={this.deleteEvent}>
-                                    Delete Event
+                                <button className="btn btn-info btn-sm" id={e._id} onClick={this.deleteEvent}>
+                                    Add Result
                                 </button>
                             </td>
                         </tr>)}
@@ -61,4 +78,4 @@ class Results extends React.Component {
     };
 };
 
-export default Results;
+export default MyEvents;

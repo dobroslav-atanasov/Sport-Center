@@ -10,12 +10,14 @@ class CreateEvent extends React.Component {
         super(props);
         this.state = {
             name: '',
+            location: '',
             date: '',
             description: '',
             town: '',
             towns: [],
             errors: {
                 name: 'Event name is required!',
+                location: 'Location is required!',
                 date: 'Date is required!',
                 description: 'Description is required!',
                 town: 'Town is required!'
@@ -30,6 +32,9 @@ class CreateEvent extends React.Component {
         switch (name) {
             case 'name':
                 errors.name = value.length < 2 ? 'Event name should be at least 2 characters long!' : '';
+                break;
+            case 'location':
+                errors.location = value.length < 5 ? 'Location should be at least 2 characters long!' : '';
                 break;
             case 'date':
                 errors.date = value === undefined ? 'Date is required!' : '';
@@ -90,7 +95,23 @@ class CreateEvent extends React.Component {
                                         : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.name}</div></MappleToolTip>}
                                 </div>
                             </div>
-                            {/* {errors.name.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.name}</div>} */}
+
+                            {/* LOCATION */}
+                            <div className="row">
+                                <div className="col-md-10">
+                                    <div className="form-group input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text"><i class="fa fa-map-marker"></i></span>
+                                        </div>
+                                        <input type="text" className="form-control" name="location" onChange={this.changeHandler} placeholder="Location" />
+                                    </div>
+                                </div>
+                                <div className="col-md-2">
+                                    {errors.location.length === 0
+                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Location name is correct!</div></MappleToolTip>
+                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.location}</div></MappleToolTip>}
+                                </div>
+                            </div>
 
                             {/* DATE */}
                             <div className="row">
@@ -99,7 +120,7 @@ class CreateEvent extends React.Component {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"> <i className="fa fa-calendar"></i> </span>
                                         </div>
-                                        <input type="date" className="form-control" name="date" onChange={this.changeHandler} />
+                                        <input type="datetime-local" className="form-control" name="date" onChange={this.changeHandler} />
                                     </div>
                                 </div>
                                 <div className="col-md-2">
@@ -108,7 +129,6 @@ class CreateEvent extends React.Component {
                                         : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.date}</div></MappleToolTip>}
                                 </div>
                             </div>
-                            {/* {errors.date.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.date}</div>} */}
 
                             {/* DESCRIPTION */}
                             <div className="row">
