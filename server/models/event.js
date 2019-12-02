@@ -13,6 +13,10 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    location: {
+        type: String,
+        required: true
+    },
     town: {
         type: mongoose.Types.ObjectId,
         ref: 'Town'

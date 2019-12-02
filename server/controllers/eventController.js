@@ -12,10 +12,10 @@ module.exports = {
 
     post: {
         create: (req, res, next) => {
-            const { name, date, description, town, creatorId } = req.body;
+            const { name, location, date, description, town, creatorId } = req.body;
             townModel.findOne({ name: town }).then(t => {
                 const townId = t.id;
-                eventModel.create({ name, date, description, town: townId, creatorId })
+                eventModel.create({ name, location, date, description, town: townId, creatorId })
                     .then((event) => res.send(event))
                     .catch(next);
             });
