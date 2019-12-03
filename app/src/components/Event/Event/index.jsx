@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
+import ReactLoading from 'react-loading';
 import EventInfo from '../EventInfo';
 import eventService from '../../../services/eventService';
-import ReactLoading from 'react-loading';
+import Participants from '../../Participants';
 
 class Event extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class Event extends React.Component {
     componentDidMount = () => {
         eventService.getEvent(this.state.id)
             .then(event => {
-                this.setState({ event });
+                this.setState({ event: event });
             });
     };
 
@@ -36,8 +37,13 @@ class Event extends React.Component {
                                     participants={event.users.length} />
                             </div>
                             <div className="col-md-8">
-                                sdfsd
+                                <div className="container">
+                                    <div className="text-center">
+                                        <h3>Participants</h3>
+                                        <Participants participants={event.users} />
+                                    </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                     : <div className="container" style={{ marginTop: 30, marginBottom: 50, width: 100, height: 100 }}>

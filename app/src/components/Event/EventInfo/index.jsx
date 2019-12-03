@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const EventInfo = ({ id, name, location, description, imageUrl, town, date, participants }) => {
-
     return (
         <div className="col-md" style={{ marginBottom: 30 }}>
             <div className="card" style={{ width: 350 }}>
@@ -20,8 +19,8 @@ const EventInfo = ({ id, name, location, description, imageUrl, town, date, part
                 </ul>
                 <div className="card-body">
                     <Link to={`/event/${id}`}>
-                        <button className="btn btn-success">
-                            Event Info
+                        <button className="btn btn-danger">
+                            Sign Up
                         </button>
                     </Link>
                 </div>

@@ -7,9 +7,9 @@ const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-danger">
             <Link to="/" className="navbar-brand"><img src="Sport-Center.png" width={40} alt="Sport-Center" /> Sport Center</Link>
-            <div class="collapse navbar-collapse">
+            <div className="collapse navbar-collapse">
                 {(user !== undefined && user.role === 'SuperAdmin') &&
-                    <ul class="navbar-nav mr-auto">
+                    <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
                             <Link to="/add-town" className="nav-link">Add Town</Link>
                         </li>
@@ -22,7 +22,7 @@ const Header = () => {
                     </ul>
                 }
                 {(user !== undefined && user.role === 'Admin') &&
-                    <ul class="navbar-nav mr-auto">
+                    <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
                             <Link to="/create-event" className="nav-link">Create Event</Link>
                         </li>
@@ -32,7 +32,7 @@ const Header = () => {
                     </ul>
                 }
                 {(user !== undefined && user.role === 'User') &&
-                    <ul class="navbar-nav mr-auto">
+                    <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
                             <Link to="/#" className="nav-link">Events</Link>
                         </li>
@@ -42,7 +42,7 @@ const Header = () => {
                     </ul>
                 }
                 {user !== undefined &&
-                    <ul class="navbar-nav ml-auto">
+                    <ul className="navbar-nav ml-auto">
                         <li className="nav-item active">
                             <Link to="/about" className="nav-link">About Us</Link>
                         </li>
@@ -55,7 +55,7 @@ const Header = () => {
                     </ul>
                 }
                 {user === undefined &&
-                    <ul class="navbar-nav ml-auto">
+                    <ul className="navbar-nav ml-auto">
                         <li className="nav-item active">
                             <Link to="/about" className="nav-link">About Us</Link>
                         </li>

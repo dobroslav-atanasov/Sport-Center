@@ -51,7 +51,7 @@ const eventService = {
             method: 'GET',
             url: `http://localhost:3333/api/event/get-event/${id}`
         }).then(res => res.data);
-    },
+    }
 };
 
 export default eventService;
