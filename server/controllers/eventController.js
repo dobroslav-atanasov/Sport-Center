@@ -10,11 +10,11 @@ module.exports = {
         },
 
         getEvent: (req, res, next) => {
-            const id  = req.params.id;
-            eventModel.findById(id).populate('town')
+            const id = req.params.id;
+            eventModel.findById(id).populate('town').populate('users')
                 .then(event => res.send(event))
                 .catch(next);
-        },
+        }
     },
 
     post: {
