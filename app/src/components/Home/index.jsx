@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import ReactLoading from 'react-loading';
 import authService from '../../services/authService';
 import eventService from '../../services/eventService';
 import EventCard from '../Event/EventCard';
@@ -6,12 +7,10 @@ import EventCard from '../Event/EventCard';
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            events: []
-        };
+        this.state = {};
     };
 
-    componentWillMount = () => {
+    componentDidMount = () => {
         eventService.getAllEvents()
             .then(events => {
                 this.setState({ events: events });
@@ -58,7 +57,7 @@ class Home extends React.Component {
                         </div>
                     </Fragment>
                 }
-                {user !== undefined &&
+                {user && events ?
                     <Fragment>
                         <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
                             <div className="row align-items-center">
@@ -73,6 +72,12 @@ class Home extends React.Component {
                             </div>
                         </div>
                     </Fragment>
+                    : <div className="container" style={{ marginTop: 30, marginBottom: 50, width: 100, height: 100 }}>
+                        <ReactLoading type="spin" color="#dc3545" />
+                        <p className="text-danger">
+                            Loading...
+                        </p>
+                    </div>
                 }
             </Fragment>
         );
