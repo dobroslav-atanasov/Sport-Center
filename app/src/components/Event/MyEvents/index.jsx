@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import ReactLoading from 'react-loading';
 import eventService from '../../../services/eventService';
 import authService from '../../../services/authService';
 
 class MyEvents extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            events: []
-        };
+        this.state = {};
     };
 
-    componentWillMount = () => {
+    componentDidMount = () => {
         const creatorId = authService.getUserInfo().id;
         eventService.getAllEvents()
             .then(events => {
@@ -39,41 +38,51 @@ class MyEvents extends React.Component {
     render() {
         const { events } = this.state;
         return (
-            <div className="container">
-                <div className="row" style={{ marginBottom: 20, marginTop: 30 }}>
-                    <div className="col-md-4 offset-md-4">
-                        <div className="form-group input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text"><i class="fa fa-search"></i></span>
+            <Fragment>
+                {events ?
+                    <div className="container">
+                        <div className="row" style={{ marginBottom: 20, marginTop: 30 }}>
+                            <div className="col-md-4 offset-md-4">
+                                <div className="form-group input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text"><i class="fa fa-search"></i></span>
+                                    </div>
+                                    <input className="form-control mr-sm-2" type="search" name="search" onChange={this.searchEvents} placeholder="Search Event" />
+                                </div>
                             </div>
-                            <input className="form-control mr-sm-2" type="search" name="search" onChange={this.searchEvents} placeholder="Search Event" />
                         </div>
-                    </div>
-                </div>
 
-                <table className="table table-bordered table-striped" style={{ marginBottom: 50 }}>
-                    <thead className="thead-dark">
-                        <tr>
-                            <th className="text-center">Event</th>
-                            <th className="text-center">Date</th>
-                            <th className="text-center">Town</th>
-                            <th className="text-center">Add Results</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {events.map(e => <tr>
-                            <td className="text-center align-middle" key={e.name}>{e.name}</td>
-                            <td className="text-center align-middle" key={e.date.toString()}>{new Date(e.date).getDate()}-{new Date(e.date).getMonth() + 1}-{new Date(e.date).getFullYear()}</td>
-                            <td className="text-center align-middle" key={e.town.name.toString()}>{e.town.name}</td>
-                            <td className="text-center align-middle" key={e.name.toString() + e.town.name.toString()}>
-                                <button className="btn btn-info btn-sm" id={e._id} onClick={this.deleteEvent}>
-                                    Add Result
+                        <table className="table table-bordered table-striped" style={{ marginBottom: 50 }}>
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th className="text-center">Event</th>
+                                    <th className="text-center">Date</th>
+                                    <th className="text-center">Town</th>
+                                    <th className="text-center">Add Results</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {events.map(e => <tr>
+                                    <td className="text-center align-middle" key={e.name}>{e.name}</td>
+                                    <td className="text-center align-middle" key={e.date.toString()}>{new Date(e.date).getDate()}-{new Date(e.date).getMonth() + 1}-{new Date(e.date).getFullYear()}</td>
+                                    <td className="text-center align-middle" key={e.town.name.toString()}>{e.town.name}</td>
+                                    <td className="text-center align-middle" key={e.name.toString() + e.town.name.toString()}>
+                                        <button className="btn btn-info btn-sm" id={e._id} onClick={this.deleteEvent}>
+                                            Add Result
                                 </button>
-                            </td>
-                        </tr>)}
-                    </tbody>
-                </table>
-            </div>
+                                    </td>
+                                </tr>)}
+                            </tbody>
+                        </table>
+                    </div>
+                    : <div className="container" style={{ marginTop: 30, marginBottom: 50, width: 100, height: 100 }}>
+                        <ReactLoading type="spin" color="#dc3545" />
+                        <p className="text-danger">
+                            Loading...
+                        </p>
+                    </div>
+                }
+            </Fragment>
         );
     };
 };

@@ -26,8 +26,7 @@ class Register extends React.Component {
                 email: 'Email is required!',
                 age: 'Age is required!',
                 gender: 'Gender is required!'
-            },
-            // isRedirect: false
+            }
         };
     };
 
@@ -79,7 +78,6 @@ class Register extends React.Component {
         if (validationService.formValidation(this.state.errors)) {
             userService.register(data).then((data) => {
                 this.props.history.push('/login');
-                // this.setState({ isRedirect: true });
             });
         }
     };
@@ -94,7 +92,6 @@ class Register extends React.Component {
     render() {
         const { errors } = this.state;
         return (
-            // this.state.isRedirect ? <Redirect to="/login" /> :
             <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
                 <div className="card bg-light">
                     <article className="card-body mx-auto">
@@ -255,8 +252,8 @@ class Register extends React.Component {
                     </article>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 };
 
 export default Register;

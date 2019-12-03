@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import MappleToolTip from 'reactjs-mappletooltip';
+import ReactLoading from 'react-loading';
 import validationService from '../../../services/validationService';
 import eventService from '../../../services/eventService';
 import townService from '../../../services/townService';
@@ -14,7 +15,6 @@ class CreateEvent extends React.Component {
             date: '',
             description: '',
             town: '',
-            towns: [],
             errors: {
                 name: 'Event name is required!',
                 location: 'Location is required!',
@@ -63,7 +63,7 @@ class CreateEvent extends React.Component {
         }
     };
 
-    componentWillMount = () => {
+    componentDidMount = () => {
         townService.getTowns()
             .then(towns => {
                 this.setState({ towns: towns });
@@ -73,109 +73,118 @@ class CreateEvent extends React.Component {
     render() {
         const { errors, towns } = this.state;
         return (
-            <div className="container" style={{ marginBottom: 50, marginTop: 30 }}>
-                <div className="card bg-light">
-                    <article className="card-body mx-auto">
-                        <h3 className="card-title mt-3 text-center">Create Event</h3>
-                        <hr />
-                        <form onSubmit={this.submitHandler}>
-                            {/* NAME */}
-                            <div className="row">
-                                <div className="col-md-10">
-                                    <div className="form-group input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text"><i className="fa fa-etsy"></i></span>
+            <Fragment>
+                {towns ?
+                    <div className="container" style={{ marginBottom: 50, marginTop: 30 }}>
+                        <div className="card bg-light">
+                            <article className="card-body mx-auto">
+                                <h3 className="card-title mt-3 text-center">Create Event</h3>
+                                <hr />
+                                <form onSubmit={this.submitHandler}>
+                                    {/* NAME */}
+                                    <div className="row">
+                                        <div className="col-md-10">
+                                            <div className="form-group input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text"><i className="fa fa-etsy"></i></span>
+                                                </div>
+                                                <input type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Name" />
+                                            </div>
                                         </div>
-                                        <input type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Name" />
-                                    </div>
-                                </div>
-                                <div className="col-md-2">
-                                    {errors.name.length === 0
-                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Event name is correct!</div></MappleToolTip>
-                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.name}</div></MappleToolTip>}
-                                </div>
-                            </div>
-
-                            {/* LOCATION */}
-                            <div className="row">
-                                <div className="col-md-10">
-                                    <div className="form-group input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text"><i class="fa fa-map-marker"></i></span>
+                                        <div className="col-md-2">
+                                            {errors.name.length === 0
+                                                ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Event name is correct!</div></MappleToolTip>
+                                                : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.name}</div></MappleToolTip>}
                                         </div>
-                                        <input type="text" className="form-control" name="location" onChange={this.changeHandler} placeholder="Location" />
                                     </div>
-                                </div>
-                                <div className="col-md-2">
-                                    {errors.location.length === 0
-                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Location name is correct!</div></MappleToolTip>
-                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.location}</div></MappleToolTip>}
-                                </div>
-                            </div>
 
-                            {/* DATE */}
-                            <div className="row">
-                                <div className="col-md-10">
-                                    <div className="form-group input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text"> <i className="fa fa-calendar"></i> </span>
+                                    {/* LOCATION */}
+                                    <div className="row">
+                                        <div className="col-md-10">
+                                            <div className="form-group input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text"><i class="fa fa-map-marker"></i></span>
+                                                </div>
+                                                <input type="text" className="form-control" name="location" onChange={this.changeHandler} placeholder="Location" />
+                                            </div>
                                         </div>
-                                        <input type="datetime-local" className="form-control" name="date" onChange={this.changeHandler} />
-                                    </div>
-                                </div>
-                                <div className="col-md-2">
-                                    {errors.date.length === 0
-                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Date is correct!</div></MappleToolTip>
-                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.date}</div></MappleToolTip>}
-                                </div>
-                            </div>
-
-                            {/* DESCRIPTION */}
-                            <div className="row">
-                                <div className="col-md-10">
-                                    <div className="form-group input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text"> <i class="fa fa-text-height"></i> </span>
+                                        <div className="col-md-2">
+                                            {errors.location.length === 0
+                                                ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Location name is correct!</div></MappleToolTip>
+                                                : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.location}</div></MappleToolTip>}
                                         </div>
-                                        <textarea className="form-control" rows="7" name="description" onChange={this.changeHandler} />
                                     </div>
-                                </div>
-                                <div className="col-md-2">
-                                    {errors.description.length === 0
-                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Description is correct!</div></MappleToolTip>
-                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.description}</div></MappleToolTip>}
-                                </div>
-                            </div>
 
-                            {/* TOWN */}
-                            <div className="row">
-                                <div className="col-md-10">
-                                    <div className="form-group input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text"><i className="fa fa-globe"></i></span>
+                                    {/* DATE */}
+                                    <div className="row">
+                                        <div className="col-md-10">
+                                            <div className="form-group input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text"> <i className="fa fa-calendar"></i> </span>
+                                                </div>
+                                                <input type="datetime-local" className="form-control" name="date" onChange={this.changeHandler} />
+                                            </div>
                                         </div>
-                                        <select className="form-control" name="town" onChange={this.changeHandler}>
-                                            <option selected=""> Select Town</option>
-                                            {towns.map(t => <option key={t.toString()}>{t}</option>)}
-                                        </select>
+                                        <div className="col-md-2">
+                                            {errors.date.length === 0
+                                                ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Date is correct!</div></MappleToolTip>
+                                                : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.date}</div></MappleToolTip>}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-md-2">
-                                    {errors.town.length === 0
-                                        ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Town is correct!</div></MappleToolTip>
-                                        : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.town}</div></MappleToolTip>}
-                                </div>
-                            </div>
-                            {/* {errors.town.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.town}</div>} */}
 
-                            {/* SUBMIT */}
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-danger btn-block">Create Event</button>
-                            </div>
-                        </form>
-                    </article>
-                </div>
-            </div>
+                                    {/* DESCRIPTION */}
+                                    <div className="row">
+                                        <div className="col-md-10">
+                                            <div className="form-group input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text"> <i class="fa fa-text-height"></i> </span>
+                                                </div>
+                                                <textarea className="form-control" rows="7" name="description" onChange={this.changeHandler} />
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            {errors.description.length === 0
+                                                ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Description is correct!</div></MappleToolTip>
+                                                : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.description}</div></MappleToolTip>}
+                                        </div>
+                                    </div>
+
+                                    {/* TOWN */}
+                                    <div className="row">
+                                        <div className="col-md-10">
+                                            <div className="form-group input-group">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text"><i className="fa fa-globe"></i></span>
+                                                </div>
+                                                <select className="form-control" name="town" onChange={this.changeHandler}>
+                                                    <option selected=""> Select Town</option>
+                                                    {towns.map(t => <option key={t.toString()}>{t}</option>)}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-2">
+                                            {errors.town.length === 0
+                                                ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Town is correct!</div></MappleToolTip>
+                                                : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.town}</div></MappleToolTip>}
+                                        </div>
+                                    </div>
+                                    {/* {errors.town.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.town}</div>} */}
+
+                                    {/* SUBMIT */}
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-danger btn-block">Create Event</button>
+                                    </div>
+                                </form>
+                            </article>
+                        </div>
+                    </div>
+                    : <div className="container" style={{ marginTop: 30, marginBottom: 50, width: 100, height: 100 }}>
+                        <ReactLoading type="spin" color="#dc3545" />
+                        <p className="text-danger">
+                            Loading...
+                         </p>
+                    </div>}
+            </Fragment>
         );
     };
 };
