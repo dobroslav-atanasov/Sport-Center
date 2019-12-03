@@ -44,7 +44,7 @@ class Login extends React.Component {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i className="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" className="form-control" name="username" onChange={this.changeHandler} placeholder="Username" />
+                                <input id="username" type="text" className="form-control" name="username" onChange={this.changeHandler} placeholder="Username" />
                             </div>
 
                             {/* PASSWORD */}
@@ -52,7 +52,7 @@ class Login extends React.Component {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"> <i className="fa fa-lock"></i> </span>
                                 </div>
-                                <input type="password" className="form-control" name="password" onChange={this.changeHandler} placeholder="Password" />
+                                <input id="password" type="password" className="form-control" name="password" onChange={this.changeHandler} placeholder="Password" />
                             </div>
                             {errors.length > 0 && <div className="alert alert-danger"><i className="fa fa-exclamation-triangle"></i> {errors}</div>}
 
