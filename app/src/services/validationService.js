@@ -51,6 +51,10 @@ const validationService = {
         return value.startsWith('http') || value.startsWith('https');
     },
 
+    registerAgeValidation: function (value){
+        return value > 15 && value < 100;
+    },
+
     isUsernameExist: function (username) {
         userService.getUsernames()
             .then(usernames => {

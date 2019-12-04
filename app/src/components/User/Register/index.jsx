@@ -60,7 +60,7 @@ class Register extends React.Component {
                 errors.email = !validationService.registerEmailValidation(value) ? 'Invalid email!' : '';
                 break;
             case 'age':
-                errors.age = value < 16 || value > 100 ? 'Age should be between 16 and 100!' : '';
+                errors.age = !validationService.registerAgeValidation(value) ? 'Age should be between 16 and 100!' : '';
                 break;
             case 'gender':
                 errors.gender = value === ' Select gender' ? 'Gender is required!' : '';

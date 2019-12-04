@@ -101,4 +101,16 @@ describe('Register component test', () => {
     it('First name and last name validation should return incorrect result', () => {
         expect(validationService.userNamesValidation('d')).toEqual(false);
     });
+
+    it('Age validation should return correct result', () => {
+        expect(validationService.registerAgeValidation(20)).toEqual(true);
+    });
+    
+    it('Agevalidation should return incorrect result', () => {
+        expect(validationService.userNamesValidation(12)).toEqual(false);
+    });
+
+    it('Agevalidation should return incorrect result', () => {
+        expect(validationService.userNamesValidation(102)).toEqual(false);
+    });
 });
