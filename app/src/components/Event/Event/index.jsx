@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import ReactLoading from 'react-loading';
 import EventInfo from '../EventInfo';
 import eventService from '../../../services/eventService';
 import Participants from '../../Participants';
+import Loading from '../../Loading';
 
 class Event extends React.Component {
     constructor(props) {
@@ -46,12 +46,7 @@ class Event extends React.Component {
                             </div>
                         </div>
                     </div>
-                    : <div className="container" style={{ marginTop: 30, marginBottom: 50, width: 100, height: 100 }}>
-                        <ReactLoading type="spin" color="#dc3545" />
-                        <p className="text-danger">
-                            Loading...
-                        </p>
-                    </div>
+                    : <Loading />
                 }
             </Fragment>
         );

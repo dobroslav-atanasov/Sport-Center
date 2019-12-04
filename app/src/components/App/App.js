@@ -8,7 +8,7 @@ import Logout from '../User/Logout';
 import Home from '../Home';
 import About from '../About';
 import NotFound from '../NotFound';
-import CreateTown from '../Town/CreateTown';
+import CreateTown from '../CreateTown';
 import CreateEvent from '../Event/CreateEvent';
 import routes from '../hocs/routes';
 import Users from '../User/Users';

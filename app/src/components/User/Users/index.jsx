@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import ReactLoading from 'react-loading';
 import userService from '../../../services/userService';
+import Loading from '../../Loading';
 
 class Users extends React.Component {
     constructor(props) {
@@ -98,12 +98,7 @@ class Users extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                    : <div className="container" style={{ marginTop: 30, marginBottom: 50, width: 100, height: 100 }}>
-                        <ReactLoading type="spin" color="#dc3545" />
-                        <p className="text-danger">
-                            Loading...
-                        </p>
-                    </div>
+                    : <Loading />
                 }
             </Fragment>
         );

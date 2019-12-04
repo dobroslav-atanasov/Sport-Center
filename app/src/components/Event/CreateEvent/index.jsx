@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import MappleToolTip from 'reactjs-mappletooltip';
-import ReactLoading from 'react-loading';
 import validationService from '../../../services/validationService';
 import eventService from '../../../services/eventService';
 import townService from '../../../services/townService';
 import authService from '../../../services/authService';
+import Loading from '../../Loading';
 
 class CreateEvent extends React.Component {
     constructor(props) {
@@ -178,12 +178,7 @@ class CreateEvent extends React.Component {
                             </article>
                         </div>
                     </div>
-                    : <div className="container" style={{ marginTop: 30, marginBottom: 50, width: 100, height: 100 }}>
-                        <ReactLoading type="spin" color="#dc3545" />
-                        <p className="text-danger">
-                            Loading...
-                         </p>
-                    </div>}
+                    : <Loading />}
             </Fragment>
         );
     };
