@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Register from '../components/User/Register';
+import validationService from '../services/validationService';
 
 describe('Register component test', () => {
     const wrapper = shallow(<Register />);
@@ -67,5 +68,13 @@ describe('Register component test', () => {
 
     it('Should have a button', () => {
         expect(wrapper.find('button').text()).toEqual('Create Account');
+    });
+
+    it('Username validation should return correct result', () => {
+        expect(validationService.usernameValidation('Dobri')).toEqual(true);
+    });
+
+    it('Username validation should return incorrect result', () => {
+        expect(validationService.usernameValidation('as#$')).toEqual(false);
     });
 });

@@ -38,8 +38,8 @@ class Register extends React.Component {
             case 'username':
                 if (this.state.usernames.includes(value)) {
                     errors.username = 'Username already exist';
-                } else if (value.length < 3) {
-                    errors.username = 'Username should be at least 3 characters long!';
+                } else if (!validationService.usernameValidation(value)) {
+                    errors.username = 'Username should be at least 3 characters long and contains only letters and digits!';
                 } else {
                     errors.username = '';
                 }
