@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import EventInfo from '../EventInfo';
 import eventService from '../../../services/eventService';
+import authService from '../../../services/authService';
 import Participants from '../../Participants';
 import Loading from '../../Loading';
 
@@ -8,7 +8,8 @@ class Event extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.match.params.id
+            id: this.props.match.params.id,
+            userId: authService.getUserInfo().id
         };
     };
 
@@ -19,22 +20,68 @@ class Event extends React.Component {
             });
     };
 
+    signUpEvent = () => {
+        const userId = this.state.userId;
+        const eventId = this.state.id;
+        eventService.signUp(eventId, userId)
+            .then(() => {
+                eventService.getEvent(this.state.id)
+                    .then(event => {
+                        this.setState({ event: event });
+                    });
+            });
+    };
+
+    refuseEvent = () => {
+        const userId = this.state.userId;
+        const eventId = this.state.id;
+        eventService.refuse(eventId, userId)
+            .then(() => {
+                eventService.getEvent(this.state.id)
+                    .then(event => {
+                        this.setState({ event: event });
+                    });
+            });
+    };
+
     render() {
         const { event } = this.state;
+        const isParticipate = event && event.users.map(u => u._id).includes(this.state.userId);
         return (
             <Fragment>
                 {event ?
                     <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
                         <div className="row">
                             <div className="col-md-4">
-                                <EventInfo id={event.id}
-                                    name={event.name}
-                                    location={event.location}
-                                    description={event.description}
-                                    imageUrl={event.town.imageUrl}
-                                    town={event.town.name}
-                                    date={event.date}
-                                    participants={event.users.length} />
+                                <div className="col-md" style={{ marginBottom: 30 }}>
+                                    <div className="card" style={{ width: 350 }}>
+                                        <img className="card-img-top" src={event.town.imageUrl} alt={event.town.name} />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{event.name}</h5>
+                                            <p className="card-text">{event.description}</p>
+                                        </div>
+                                        <ul className="list-group list-group-flush">
+                                            <li className="list-group-item"><b>Town:</b> {event.town.name}</li>
+                                            <li className="list-group-item"><b>Location:</b> {event.location}</li>
+                                            <li className="list-group-item"><b>Date:</b> {new Date(event.date).getDate()}-{new Date(event.date).getMonth() + 1}-{new Date(event.date).getFullYear()}</li>
+                                            <li className="list-group-item"><b>Time:</b> {new Date(event.date).getHours()}:{new Date(event.date).getMinutes()}</li>
+                                            <li className="list-group-item"><b>Participants:</b> {event.users.length}</li>
+                                        </ul>
+                                        <div className="card-body">
+                                            <div className="row">
+                                                <div className="col-md-4">
+                                                    {(isParticipate && isParticipate === true) ?
+                                                        <button className="btn btn-danger" onClick={this.refuseEvent}>
+                                                            Refuse
+                                                        </button>
+                                                        : <button className="btn btn-info" onClick={this.signUpEvent}>
+                                                            Sign Up
+                                                        </button>}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="col-md-8">
                                 <div className="container">

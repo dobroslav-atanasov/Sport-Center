@@ -51,6 +51,28 @@ const eventService = {
             method: 'GET',
             url: `http://localhost:3333/api/event/get-event/${id}`
         }).then(res => res.data);
+    },
+
+    signUp: function (eventId, userId) {
+        return axios({
+            method: 'PUT',
+            url: 'http://localhost:3333/api/event/sign-up',
+            data: {
+                eventId,
+                userId
+            }
+        }).then(res => res.data);
+    },
+
+    refuse: function (eventId, userId) {
+        return axios({
+            method: 'PUT',
+            url: 'http://localhost:3333/api/event/refuse',
+            data: {
+                eventId,
+                userId
+            }
+        }).then(res => res.data);
     }
 };
 
