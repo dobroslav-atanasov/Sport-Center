@@ -45,7 +45,7 @@ class Register extends React.Component {
                 }
                 break;
             case 'password':
-                errors.password = value.length < 3 ? 'Password should be at least 3 characters long!' : '';
+                errors.password = !validationService.passwordValidation(value) ? 'Password should be at least 3 characters long and contains only letters and digits!' : '';
                 break;
             case 'confirmPassword':
                 errors.confirmPassword = value !== this.state.password ? 'Passwords don\'t match!' : '';

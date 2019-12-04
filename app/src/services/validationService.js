@@ -17,7 +17,12 @@ const validationService = {
         return valid;
     },
 
-    usernameValidation: function(value){
+    usernameValidation: function (value) {
+        const regex = RegExp(/[A-Za-z0-9]{3,}/i);
+        return regex.test(value);
+    },
+
+    passwordValidation: function (value) {
         const regex = RegExp(/[A-Za-z0-9]{3,}/i);
         return regex.test(value);
     },

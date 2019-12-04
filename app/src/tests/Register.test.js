@@ -77,4 +77,28 @@ describe('Register component test', () => {
     it('Username validation should return incorrect result', () => {
         expect(validationService.usernameValidation('as#$')).toEqual(false);
     });
+
+    it('Password validation should return correct result', () => {
+        expect(validationService.passwordValidation('123')).toEqual(true);
+    });
+
+    it('Password validation should return incorrect result', () => {
+        expect(validationService.passwordValidation('1!')).toEqual(false);
+    });
+
+    it('Email validation should return correct result', () => {
+        expect(validationService.registerEmailValidation('test@test.com')).toEqual(true);
+    });
+    
+    it('Email validation should return incorrect result', () => {
+        expect(validationService.registerEmailValidation('test@test.bg')).toEqual(false);
+    });
+
+    it('First name and last name validation should return correct result', () => {
+        expect(validationService.userNamesValidation('Dobroslav')).toEqual(true);
+    });
+    
+    it('First name and last name validation should return incorrect result', () => {
+        expect(validationService.userNamesValidation('d')).toEqual(false);
+    });
 });
