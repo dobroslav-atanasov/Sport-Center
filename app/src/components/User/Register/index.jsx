@@ -106,7 +106,7 @@ class Register extends React.Component {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"><i className="fa fa-user"></i></span>
                                         </div>
-                                        <input type="text" className="form-control" name="username" onChange={this.changeHandler} placeholder="Username" />
+                                        <input id="username" type="text" className="form-control" name="username" onChange={this.changeHandler} placeholder="Username" />
                                     </div>
                                 </div>
                                 <div className="col-md-2">
@@ -125,7 +125,7 @@ class Register extends React.Component {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"> <i className="fa fa-lock"></i> </span>
                                         </div>
-                                        <input type="password" className="form-control" name="password" onChange={this.changeHandler} placeholder="Password" />
+                                        <input id="password" type="password" className="form-control" name="password" onChange={this.changeHandler} placeholder="Password" />
                                     </div>
                                 </div>
                                 <div className="col-md-2">
@@ -142,7 +142,7 @@ class Register extends React.Component {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"> <i className="fa fa-lock"></i> </span>
                                         </div>
-                                        <input type="password" className="form-control" name="confirmPassword" onChange={this.changeHandler} noValidate placeholder="Confirm Password" />
+                                        <input id="confirmPassword" type="password" className="form-control" name="confirmPassword" onChange={this.changeHandler} noValidate placeholder="Confirm Password" />
                                     </div>
                                 </div>
                                 <div className="col-md-2">
@@ -161,7 +161,7 @@ class Register extends React.Component {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"><i className="fa fa-envelope"></i></span>
                                         </div>
-                                        <input type="text" className="form-control" name="email" onChange={this.changeHandler} placeholder="E-mail" />
+                                        <input id="email" type="text" className="form-control" name="email" onChange={this.changeHandler} placeholder="E-mail" />
                                     </div>
                                 </div>
                                 <div className="col-md-2">
@@ -178,7 +178,7 @@ class Register extends React.Component {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"><i className="fa fa-user"></i></span>
                                         </div>
-                                        <input type="text" className="form-control" name="firstName" onChange={this.changeHandler} noValidate placeholder="First Name" />
+                                        <input id="firstName" type="text" className="form-control" name="firstName" onChange={this.changeHandler} noValidate placeholder="First Name" />
                                     </div>
                                 </div>
                                 <div className="col-md-2">
@@ -195,7 +195,7 @@ class Register extends React.Component {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"><i className="fa fa-user"></i></span>
                                         </div>
-                                        <input type="text" className="form-control" name="lastName" onChange={this.changeHandler} placeholder="Last Name" />
+                                        <input id="lastName" type="text" className="form-control" name="lastName" onChange={this.changeHandler} placeholder="Last Name" />
                                     </div>
                                 </div>
                                 <div className="col-md-2">
@@ -212,7 +212,7 @@ class Register extends React.Component {
                                         <div className="input-group-prepend">
                                             <span className="input-group-text"><i className="fa fa-table"></i></span>
                                         </div>
-                                        <input type="number" className="form-control" name="age" onChange={this.changeHandler} placeholder="Age" />
+                                        <input id="age" type="number" className="form-control" name="age" onChange={this.changeHandler} placeholder="Age" />
                                     </div>
                                 </div>
                                 <div className="col-md-2">
