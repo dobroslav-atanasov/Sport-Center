@@ -37,5 +37,21 @@ module.exports = {
                 .then(removeEvent => res.send(removeEvent))
                 .catch(next);
         }
+    },
+
+    put: {
+        signUp: (req, res, next) => {
+            const { eventId, userId } = req.body;
+            eventModel.updateOne({ _id: eventId }, { $push: { users: userId } })
+                .then(data => res.send(data))
+                .catch(next);
+        },
+
+        refuse: (req, res, next) => {
+            const { eventId, userId } = req.body;
+            eventModel.updateOne({ _id: eventId }, { $pull: { users: userId } })
+                .then(data => res.send(data))
+                .catch(next);
+        }
     }
 };

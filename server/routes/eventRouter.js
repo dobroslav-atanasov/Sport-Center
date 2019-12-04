@@ -9,4 +9,8 @@ router.post('/create', eventController.post.create);
 
 router.delete('/delete-event', eventController.delete.deleteEvent);
 
+router.put('/sign-up', eventController.put.signUp);
+
+router.put('/refuse', eventController.put.refuse);
+
 module.exports = router;
