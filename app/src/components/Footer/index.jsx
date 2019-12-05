@@ -11,7 +11,7 @@ const Footer = () => {
                     <p>
                         <span>Powered by </span>
                         <i className="fa fa-github"></i><a href="https://github.com/dobroslav-atanasov" target="_black"> Dobroslav Atanasov </a>
-                        <span>&copy; 2019 </span>
+                        <span>&copy; {new Date().getFullYear()} </span>
                     </p>
                 </div>
                 <div className="col-md-4">

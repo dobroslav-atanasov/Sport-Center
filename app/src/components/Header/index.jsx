@@ -44,9 +44,6 @@ const Header = () => {
                 {user !== undefined &&
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item active">
-                            <Link to="/about" className="nav-link">About Us</Link>
-                        </li>
-                        <li className="nav-item active">
                             <Link to="/#" className="nav-link">Hello {user.username}!</Link>
                         </li>
                         <li className="nav-item active">
