@@ -47,6 +47,7 @@ class Event extends React.Component {
     render() {
         const { event } = this.state;
         const isParticipate = event && event.users.map(u => u._id).includes(this.state.userId);
+        const isCreator = event && event.creatorId === this.state.userId;
         return (
             <Fragment>
                 {event ?
@@ -68,17 +69,17 @@ class Event extends React.Component {
                                             <li className="list-group-item"><b>Participants:</b> {event.users.length}</li>
                                         </ul>
                                         <div className="card-body">
-                                            <div className="row">
-                                                <div className="col-md-4">
-                                                    {(isParticipate && isParticipate === true) ?
-                                                        <button className="btn btn-danger" onClick={this.refuseEvent}>
-                                                            Refuse
+                                            {isCreator ?
+                                                <button className="btn btn-warning">
+                                                    You can not participate!
                                                         </button>
-                                                        : <button className="btn btn-info" onClick={this.signUpEvent}>
-                                                            Sign Up
-                                                        </button>}
-                                                </div>
-                                            </div>
+                                                : (isParticipate && isParticipate === true) ?
+                                                    <button className="btn btn-danger" onClick={this.refuseEvent}>
+                                                        Refuse
+                                                            </button>
+                                                    : <button className="btn btn-info" onClick={this.signUpEvent}>
+                                                        Sign Up
+                                                            </button>}
                                         </div>
                                     </div>
                                 </div>
