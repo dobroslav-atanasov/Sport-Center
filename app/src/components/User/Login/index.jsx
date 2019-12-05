@@ -58,10 +58,10 @@ class Login extends React.Component {
                             {errors.length > 0 && <div className="alert alert-danger"><i className="fa fa-exclamation-triangle"></i> {errors}</div>}
 
                             {/* SUBMIT */}
-                            <div class="form-group">
+                            <div className="form-group">
                                 <button type="submit" className="btn btn-danger btn-block">Log In</button>
                             </div>
-                            <p class="text-center">Don't have account? <Link to="/register">Create Account</Link></p>
+                            <p className="text-center">Don't have account? <Link to="/register">Create Account</Link></p>
                         </form>
                     </article>
                 </div>
