@@ -27,12 +27,8 @@ const validationService = {
         return regex.test(value);
     },
 
-    passwordMatchValidation: function(value, password){
+    passwordMatchValidation: function (value, password) {
         return value === password;
-    },
-
-    genderValidation: function(value) {
-        return value === ' Select gender';
     },
 
     registerEmailValidation: function (value) {
@@ -55,11 +51,23 @@ const validationService = {
         return regex.test(value);
     },
 
+    lengthValidation: function (value, minValue) {
+        return value.length < minValue;
+    },
+
+    checkUndefinedValidation: function (value) {
+        return value === undefined;
+    },
+
+    compareStringValidation: function (value, result) {
+        return value === result;
+    },
+
     imageUrlValidation: function (value) {
         return value.startsWith('http') || value.startsWith('https');
     },
 
-    registerAgeValidation: function (value){
+    registerAgeValidation: function (value) {
         return value > 15 && value < 100;
     },
 

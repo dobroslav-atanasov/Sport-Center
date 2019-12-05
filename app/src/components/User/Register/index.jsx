@@ -64,7 +64,7 @@ class Register extends React.Component {
                 errors.age = !validationService.registerAgeValidation(value) ? constants.register.INVALID_AGE : '';
                 break;
             case 'gender':
-                errors.gender = validationService.genderValidation(value) ? constants.register.GENDER_REQUIRED : '';
+                errors.gender = validationService.compareStringValidation(value, ' Select gender') ? constants.register.GENDER_REQUIRED : '';
                 break;
             default:
                 break;

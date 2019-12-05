@@ -5,6 +5,7 @@ import eventService from '../../../services/eventService';
 import townService from '../../../services/townService';
 import authService from '../../../services/authService';
 import Loading from '../../Loading';
+import constants from '../../../constants/constants';
 
 class CreateEvent extends React.Component {
     constructor(props) {
@@ -16,11 +17,11 @@ class CreateEvent extends React.Component {
             description: '',
             town: '',
             errors: {
-                name: 'Event name is required!',
-                location: 'Location is required!',
-                date: 'Date is required!',
-                description: 'Description is required!',
-                town: 'Town is required!'
+                name: constants.createEvent.NAME_REQUIRED,
+                location: constants.createEvent.LOCATION_REQUIRED,
+                date: constants.createEvent.DATE_REQUIRED,
+                description: constants.createEvent.DESTRICTION_REQUIRED,
+                town: constants.createEvent.TOWN_REQUIRED
             }
         };
     };
@@ -31,19 +32,19 @@ class CreateEvent extends React.Component {
         let errors = this.state.errors;
         switch (name) {
             case 'name':
-                errors.name = value.length < 2 ? 'Event name should be at least 2 characters long!' : '';
+                errors.name = validationService.lengthValidation(value, 2) ? constants.createEvent.INVALID_NAME : '';
                 break;
             case 'location':
-                errors.location = value.length < 5 ? 'Location should be at least 2 characters long!' : '';
+                errors.location = validationService.lengthValidation(value, 5) ? constants.createEvent.INVALID_LOCATION : '';
                 break;
             case 'date':
-                errors.date = value === undefined ? 'Date is required!' : '';
+                errors.date = validationService.checkUndefinedValidation(value) ? constants.createEvent.DATE_REQUIRED : '';
                 break;
             case 'description':
-                errors.description = !validationService.eventDescriptionValidation(value) ? 'Description should be at least 50 symbols and contains only letters, digits and special symbols /.,!?()/!' : '';
+                errors.description = !validationService.eventDescriptionValidation(value) ? constants.createEvent.INVALID_DESCRIPTION : '';
                 break;
             case 'town':
-                errors.town = value === 'Select Town' ? 'Town is required!' : '';
+                errors.town = validationService.compareStringValidation(value, 'Select Town') ? constants.createEvent.TOWN_REQUIRED : '';
                 break;
             default:
                 break;
@@ -168,7 +169,6 @@ class CreateEvent extends React.Component {
                                                 : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.town}</div></MappleToolTip>}
                                         </div>
                                     </div>
-                                    {/* {errors.town.length > 0 && <div className="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {errors.town}</div>} */}
 
                                     {/* SUBMIT */}
                                     <div class="form-group">

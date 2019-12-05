@@ -33,7 +33,14 @@ const constants = {
     },
 
     createEvent: {
-        
+        INVALID_NAME: 'Event name should be at least 2 characters long!',
+        INVALID_LOCATION: 'Location should be at least 2 characters long!',
+        INVALID_DESCRIPTION: 'Description should be at least 50 symbols and contains only letters, digits and special symbols /.,!?()/!',
+        NAME_REQUIRED: 'Event name is required!',
+        LOCATION_REQUIRED: 'Location is required!',
+        DATE_REQUIRED: 'Date is required!',
+        DESTRICTION_REQUIRED: 'Description is required!',
+        TOWN_REQUIRED: 'Town is required!'
     }
 };
 
