@@ -27,6 +27,14 @@ const validationService = {
         return regex.test(value);
     },
 
+    passwordMatchValidation: function(value, password){
+        return value === password;
+    },
+
+    genderValidation: function(value) {
+        return value === ' Select gender';
+    },
+
     registerEmailValidation: function (value) {
         const regex = RegExp(/[\w]+@[a-z]+\.com/i);
         return regex.test(value);
