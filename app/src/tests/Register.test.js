@@ -106,11 +106,19 @@ describe('Register component test', () => {
         expect(validationService.registerAgeValidation(20)).toEqual(true);
     });
     
-    it('Agevalidation should return incorrect result', () => {
+    it('Age validation should return incorrect result', () => {
         expect(validationService.userNamesValidation(12)).toEqual(false);
     });
 
-    it('Agevalidation should return incorrect result', () => {
+    it('Age validation should return incorrect result', () => {
         expect(validationService.userNamesValidation(102)).toEqual(false);
+    });
+
+    it('Match validation should return correct result', () => {
+        expect(validationService.passwordMatchValidation('pass', 'pass')).toEqual(true);
+    });
+    
+    it('Match validation should return incorrect result', () => {
+        expect(validationService.passwordMatchValidation('pass', 'pas')).toEqual(false);
     });
 });
