@@ -5,7 +5,7 @@ import townService from '../../services/townService';
 import Loading from '../Loading';
 import constants from '../../constants/constants';
 
-class Town extends React.Component {
+class CreateTown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -143,4 +143,4 @@ class Town extends React.Component {
     };
 };
 
-export default Town;
+export default CreateTown;
