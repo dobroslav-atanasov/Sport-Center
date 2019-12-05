@@ -84,19 +84,4 @@ module.exports = {
                 });
         }
     }
-
-    // put: (req, res, next) => {
-    //     const id = req.params.id;
-    //     const { username, password } = req.body;
-    //     userModel.update({ _id: id }, { username, password })
-    //         .then((updatedUser) => res.send(updatedUser))
-    //         .catch(next)
-    // },
-
-    // delete: (req, res, next) => {
-    //     const id = req.params.id;
-    //     userModel.deleteOne({ _id: id })
-    //         .then((removedUser) => res.send(removedUser))
-    //         .catch(next)
-    // }
 };
