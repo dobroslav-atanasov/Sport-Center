@@ -3,6 +3,7 @@ import MappleToolTip from 'reactjs-mappletooltip';
 import validationService from '../../services/validationService';
 import townService from '../../services/townService';
 import Loading from '../Loading';
+import constants from '../../constants/constants';
 
 class Town extends React.Component {
     constructor(props) {
@@ -13,9 +14,9 @@ class Town extends React.Component {
             imageUrl: '',
             towns: undefined,
             errors: {
-                name: 'Town name is required!',
-                country: 'Country name is required!',
-                imageUrl: 'Image url is required!'
+                name: constants.createTown.TOWN_NAME_REQUIRED,
+                country: constants.createTown.COUNTRY_NAME_REQUIRED,
+                imageUrl: constants.createTown.IMAGE_URL_REQUIRED
             }
         };
     };
@@ -28,18 +29,18 @@ class Town extends React.Component {
         switch (name) {
             case 'name':
                 if (this.state.towns.includes(value)) {
-                    errors.name = 'Town already exist!';
+                    errors.name = constants.createTown.TOWN_EXIST;
                 } else if (!validationService.townNameValidation(value)) {
-                    errors.name = 'Town should be at least 3 symbols long and contains only letters!';
+                    errors.name = constants.createTown.INVALID_TOWN;
                 } else {
                     errors.name = '';
                 }
                 break;
             case 'country':
-                errors.country = !validationService.countryNameValidation(value) ? 'Country should be at least 4 symbols long and contains only letters!' : '';
+                errors.country = !validationService.countryNameValidation(value) ? constants.createTown.INVALID_COUNTRY : '';
                 break;
             case 'imageUrl':
-                errors.imageUrl = !validationService.imageUrlValidation(value) ? 'Image url should start with http or https!' : '';
+                errors.imageUrl = !validationService.imageUrlValidation(value) ? constants.createTown.INVALID_IMAGE_URL : '';
                 break;
             default:
                 break;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import validationService from '../../../services/validationService';
 import userService from '../../../services/userService';
 import MappleToolTip from 'reactjs-mappletooltip';
+import constants from '../../../constants/constants';
 
 class Register extends React.Component {
     constructor(props) {
@@ -18,14 +19,14 @@ class Register extends React.Component {
             gender: '',
             usernames: [],
             errors: {
-                username: 'Username is required!',
-                password: 'Password is required!',
-                confirmPassword: 'Confirm password is required!',
-                firstName: 'First name is required!',
-                lastName: 'Last name is required!',
-                email: 'Email is required!',
-                age: 'Age is required!',
-                gender: 'Gender is required!'
+                username: constants.register.USERNAME_REQUIRED,
+                password: constants.register.PASSWORD_REQUIRED,
+                confirmPassword: constants.register.CONFIRM_PASSWORD_REQUIRED,
+                firstName: constants.register.FIRST_NAME_REQUIRED,
+                lastName: constants.register.LAST_NAME_REQUIRED,
+                email: constants.register.EMAIL_REQUIRED,
+                age: constants.register.AGE_REQUIRED,
+                gender: constants.register.GENDER_REQUIRED
             }
         };
     };
@@ -37,33 +38,33 @@ class Register extends React.Component {
         switch (name) {
             case 'username':
                 if (this.state.usernames.includes(value)) {
-                    errors.username = 'Username already exist';
+                    errors.username = constants.register.USERNAME_EXIST;
                 } else if (!validationService.usernameValidation(value)) {
-                    errors.username = 'Username should be at least 3 characters long and contains only letters and digits!';
+                    errors.username = constants.register.INVALID_USERNAME;
                 } else {
                     errors.username = '';
                 }
                 break;
             case 'password':
-                errors.password = !validationService.passwordValidation(value) ? 'Password should be at least 3 characters long and contains only letters and digits!' : '';
+                errors.password = !validationService.passwordValidation(value) ? constants.register.INVALID_PASSWORD : '';
                 break;
             case 'confirmPassword':
-                errors.confirmPassword = value !== this.state.password ? 'Passwords don\'t match!' : '';
+                errors.confirmPassword = !validationService.passwordMatchValidation(value, this.state.password) ? constants.register.PASSWORD_MATCH : '';
                 break;
             case 'firstName':
-                errors.firstName = !validationService.userNamesValidation(value) ? 'First name should be more than 2 symbols and contains only letters!' : '';
+                errors.firstName = !validationService.userNamesValidation(value) ? constants.register.INVALID_FIRST_NAME : '';
                 break;
             case 'lastName':
-                errors.lastName = !validationService.userNamesValidation(value) ? 'Last name should be more than 2 symbols and contains only letters!' : '';
+                errors.lastName = !validationService.userNamesValidation(value) ? constants.register.INVALID_LAST_NAME : '';
                 break;
             case 'email':
-                errors.email = !validationService.registerEmailValidation(value) ? 'Invalid email!' : '';
+                errors.email = !validationService.registerEmailValidation(value) ? constants.register.INVALID_EMAIL : '';
                 break;
             case 'age':
-                errors.age = !validationService.registerAgeValidation(value) ? 'Age should be between 16 and 100!' : '';
+                errors.age = !validationService.registerAgeValidation(value) ? constants.register.INVALID_AGE : '';
                 break;
             case 'gender':
-                errors.gender = value === ' Select gender' ? 'Gender is required!' : '';
+                errors.gender = validationService.genderValidation(value) ? constants.register.GENDER_REQUIRED : '';
                 break;
             default:
                 break;

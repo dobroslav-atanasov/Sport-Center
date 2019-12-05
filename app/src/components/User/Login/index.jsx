@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../../services/userService';
+import constants from '../../../constants/constants';
 
 class Login extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Login extends React.Component {
         event.preventDefault();
         const data = this.state;
         userService.login(data).then(res => {
-            if (res === 'Invalid username or password!') {
+            if (res === constants.login.INVALID_USERNAME_PASSWORD) {
                 this.setState({ errors: res });
             } else {
                 this.props.history.push('/');
