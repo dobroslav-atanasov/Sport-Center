@@ -15,6 +15,7 @@ import Users from '../User/Users';
 import Events from '../Event/Events';
 import MyEvents from '../Event/MyEvents';
 import Event from '../Event/Event';
+import CreateResult from '../Result/CreateResult';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,13 +39,14 @@ class App extends React.Component {
           <Route exact path="/register" component={publicRoute(Register)} />
           <Route exact path="/login" component={publicRoute(Login)} />
           <Route exact path="/logout" component={userRoute(Logout)} />
-          <Route exact path="/about" component={About} />
+          <Route exact path="/about" component={publicRoute(About)} />
           <Route exact path="/add-town" component={superAdminRoute(CreateTown)} />
           <Route exact path="/create-event" component={adminRoute(CreateEvent)} />
           <Route exact path="/users" component={superAdminRoute(Users)} />
           <Route exact path="/events" component={superAdminRoute(Events)} />
           <Route exact path="/my-events" component={adminRoute(MyEvents)} />
           <Route exact path="/event/:id" component={userRoute(Event)} />
+          <Route exact path="/add-result/:id" component={adminRoute(CreateResult)} />
           <Route component={NotFound} />
         </Switch>
         <Route path="/" component={Footer} />
