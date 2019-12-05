@@ -48,6 +48,7 @@ class Event extends React.Component {
         const { event } = this.state;
         const isParticipate = event && event.users.map(u => u._id).includes(this.state.userId);
         const isCreator = event && event.creatorId === this.state.userId;
+        const isValidEvent = event && new Date() > new Date(event.date);
         return (
             <Fragment>
                 {event ?
@@ -69,16 +70,20 @@ class Event extends React.Component {
                                             <li className="list-group-item"><b>Participants:</b> {event.users.length}</li>
                                         </ul>
                                         <div className="card-body">
-                                            {isCreator ?
-                                                <button className="btn btn-warning">
-                                                    You can not participate!
+                                            {isValidEvent ?
+                                                <button className="btn btn-success">
+                                                    Result
+                                                </button>
+                                                : isCreator ?
+                                                    <button className="btn btn-warning">
+                                                        You can not participate!
                                                         </button>
-                                                : (isParticipate && isParticipate === true) ?
-                                                    <button className="btn btn-danger" onClick={this.refuseEvent}>
-                                                        Refuse
+                                                    : (isParticipate && isParticipate === true) ?
+                                                        <button className="btn btn-danger" onClick={this.refuseEvent}>
+                                                            Refuse
                                                             </button>
-                                                    : <button className="btn btn-info" onClick={this.signUpEvent}>
-                                                        Sign Up
+                                                        : <button className="btn btn-info" onClick={this.signUpEvent}>
+                                                            Sign Up
                                                             </button>}
                                         </div>
                                     </div>

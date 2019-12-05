@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import eventService from '../../../services/eventService';
 import authService from '../../../services/authService';
 import Loading from '../../Loading';
@@ -67,9 +68,11 @@ class MyEvents extends React.Component {
                                     <td className="text-center align-middle" key={e.date.toString()}>{new Date(e.date).getDate()}-{new Date(e.date).getMonth() + 1}-{new Date(e.date).getFullYear()}</td>
                                     <td className="text-center align-middle" key={e.town.name.toString()}>{e.town.name}</td>
                                     <td className="text-center align-middle" key={e.name.toString() + e.town.name.toString()}>
-                                        <button className="btn btn-info btn-sm" id={e._id} onClick={this.deleteEvent}>
-                                            Add Result
-                                </button>
+                                        <Link to={`/add-result/${e._id}`}>
+                                            <button className="btn btn-info btn-sm">
+                                                Add Result
+                                            </button>
+                                        </Link>
                                     </td>
                                 </tr>)}
                             </tbody>
