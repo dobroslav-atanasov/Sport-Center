@@ -32,96 +32,26 @@ class MyResults extends React.Component {
                     </div>
                 </div>
 
-                <Link to="/">
-                    <table class="table table-bordered bg-light">
-                        <tbody>
+                <table class="table table-bordered bg-light">
+                    <thead className="thead-dark">
+                        <tr>
+                            <th className="text-center">Event</th>
+                            <th className="text-center">Date</th>
+                            <th className="text-center">Result</th>
+                            <th className="text-center">Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <Link to="/">
                             <tr>
-                                <td><b>Event:</b> Sofia Run</td>
-                                <td><b>Date:</b> 22.12.2019</td>
-                                <td><b>Result:</b> 12:55</td>
-                                <td><b>Position:</b> 1</td>
+                                <td>Sofia Run</td>
+                                <td>22.12.2019</td>
+                                <td>12:55</td>
+                                <td>1</td>
                             </tr>
-                        </tbody>
-                    </table>
-                </Link>
-
-                <Link to="/">
-                    <table class="table table-bordered bg-light">
-                        <tbody>
-                            <tr>
-                                <td><b>Event:</b> Sofia Run</td>
-                                <td><b>Date:</b> 22.12.2019</td>
-                                <td><b>Result:</b> 12:55</td>
-                                <td><b>Position:</b> 1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Link>
-
-                <Link to="/">
-                    <table class="table table-bordered bg-light">
-                        <tbody>
-                            <tr>
-                                <td><b>Event:</b> Sofia Run</td>
-                                <td><b>Date:</b> 22.12.2019</td>
-                                <td><b>Result:</b> 12:55</td>
-                                <td><b>Position:</b> 1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Link>
-
-                <Link to="/">
-                    <table class="table table-bordered bg-light">
-                        <tbody>
-                            <tr>
-                                <td><b>Event:</b> Sofia Run</td>
-                                <td><b>Date:</b> 22.12.2019</td>
-                                <td><b>Result:</b> 12:55</td>
-                                <td><b>Position:</b> 1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Link>
-
-                <Link to="/">
-                    <table class="table table-bordered bg-light">
-                        <tbody>
-                            <tr>
-                                <td><b>Event:</b> Sofia Run</td>
-                                <td><b>Date:</b> 22.12.2019</td>
-                                <td><b>Result:</b> 12:55</td>
-                                <td><b>Position:</b> 1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Link>
-
-                <Link to="/">
-                    <table class="table table-bordered bg-light">
-                        <tbody>
-                            <tr>
-                                <td><b>Event:</b> Sofia Run</td>
-                                <td><b>Date:</b> 22.12.2019</td>
-                                <td><b>Result:</b> 12:55</td>
-                                <td><b>Position:</b> 1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Link>
-
-                <Link to="/">
-                    <table class="table table-bordered bg-light">
-                        <tbody>
-                            <tr>
-                                <td><b>Event:</b> Sofia Run</td>
-                                <td><b>Date:</b> 22.12.2019</td>
-                                <td><b>Result:</b> 12:55</td>
-                                <td><b>Position:</b> 1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Link>
+                        </Link>
+                    </tbody>
+                </table>
             </div>
         );
     };
