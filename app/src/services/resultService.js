@@ -13,6 +13,13 @@ const resultService = {
         }).then(res => {
             console.log(res.data);
         });
+    },
+
+    getResultsByEvent: function (id) {
+        return axios({
+            method: 'GET',
+            url: `http://localhost:3333/api/result/get-results/${id}`
+        }).then(res => res.data);
     }
 };
 
