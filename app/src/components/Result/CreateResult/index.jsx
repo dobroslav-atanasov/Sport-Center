@@ -40,6 +40,8 @@ class CreateResult extends React.Component {
 
     render() {
         const { event } = this.state;
+        const { errors } = this.state;
+        console.log(errors);
         return (
             <Fragment>
                 {event ?
@@ -61,7 +63,7 @@ class CreateResult extends React.Component {
                                     <td className="text-center align-middle" key={u.username + u.gender}>{u.gender}</td>
                                     <td className="text-center align-middle" key={u.username + u.age}>{u.age}</td>
                                     <td className="text-center align-middle" key={u.username + 'result'}>
-                                        <input type="text" className="form-control" name={u._id} onChange={this.changeHandler} />
+                                        <input type="text" className="form-control" name={u._id} onChange={this.changeHandler} placeholder="hh:mm:ss" />
                                     </td>
                                 </tr>)}
                             </tbody>

@@ -111,8 +111,6 @@ class Register extends React.Component {
                                     </div>
                                 </div>
                                 <div className="col-md-2">
-                                    {/* <input type="text" className="form-control" name="username" disabled value={errors.username.length === 0 ? <div className="alert alert-success"><i className="fa fa-check"></i> Username is correct</div> : <div className="alert alert-warning"><i className="fa fa-exclamation-triangle"></i> {errors.username}</div>} /> */}
-                                    {/* {errors.username.length === 0 ? <div onMouseOver={this.showHover} className="align-middle text-success"><i className="fa fa-check"></i> Username is correct</div> : <div className="align-middle text-danger"><i className="fa fa-exclamation-triangle"></i> {errors.username}</div>} */}
                                     {errors.username.length === 0
                                         ? <MappleToolTip><div className="text-success"><i className="fa fa-check"></i></div><div className="text-success">Username is correct!</div></MappleToolTip>
                                         : <MappleToolTip><div className="text-danger"><i className="fa fa-exclamation-triangle"></i></div><div className="text-danger">{errors.username}</div></MappleToolTip>}
