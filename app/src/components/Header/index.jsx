@@ -14,10 +14,10 @@ const Header = () => {
                             <Link to="/add-town" className="nav-link">Add Town</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/users" className="nav-link">Users</Link>
+                            <Link to="/users" className="nav-link">All Users</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/events" className="nav-link">Events</Link>
+                            <Link to="/super-admin-events" className="nav-link">All Events</Link>
                         </li>
                     </ul>
                 }
@@ -30,7 +30,7 @@ const Header = () => {
                             <Link to="/my-created-events" className="nav-link">My Created Events</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/my-events" className="nav-link">My Events</Link>
+                            <Link to="/events" className="nav-link">Events</Link>
                         </li>
                         <li className="nav-item active">
                             <Link to="/my-results" className="nav-link">My Results</Link>
@@ -40,7 +40,7 @@ const Header = () => {
                 {(user !== undefined && user.role === 'User') &&
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <Link to="/my-events" className="nav-link">My Events</Link>
+                            <Link to="/events" className="nav-link">Events</Link>
                         </li>
                         <li className="nav-item active">
                             <Link to="/my-results" className="nav-link">My Results</Link>
@@ -50,7 +50,7 @@ const Header = () => {
                 {user !== undefined &&
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item active">
-                            <Link to="/#" className="nav-link">Hello {user.username}!</Link>
+                            <Link to="/#" className="nav-link">Hello{user.role === 'Admin' && ' Admin'} {user.username}!</Link>
                         </li>
                         <li className="nav-item active">
                             <Link to="/logout" className="nav-link">Logout</Link>
