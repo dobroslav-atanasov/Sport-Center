@@ -3,6 +3,17 @@ const eventModel = require('../models/event');
 const userModel = require('../models/user');
 
 module.exports = {
+    get: {
+        getResultByEventId: (req, res, next) => {
+            const eventId = req.params.id;
+            resultModel.find({ event: eventId }).populate('user').populate('event')
+                .then(results => {
+                    res.send(results);
+                })
+                .catch(next);
+        }
+    },
+
     post: {
         add: (req, res, next) => {
             const { eventId, userId, time } = req.body;
