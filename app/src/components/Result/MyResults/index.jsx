@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class MyResults extends React.Component {
     render() {
@@ -42,14 +41,12 @@ class MyResults extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <Link to="/">
                             <tr>
-                                <td>Sofia Run</td>
-                                <td>22.12.2019</td>
-                                <td>12:55</td>
-                                <td>1</td>
+                                <td className="text-center">Sofia Run</td>
+                                <td className="text-center">22.12.2019</td>
+                                <td className="text-center">12:55</td>
+                                <td className="text-center">1</td>
                             </tr>
-                        </Link>
                     </tbody>
                 </table>
             </div>
