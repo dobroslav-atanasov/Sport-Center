@@ -19,23 +19,6 @@ class CreateResult extends React.Component {
             });
     };
 
-    // searchEvents = (e) => {
-    //     e.preventDefault();
-    //     const { event } = this.state;
-    //     const creatorId = authService.getUserInfo().id;
-    //     const search = e.target.value.toLowerCase();
-    //     if (search === '') {
-    //         eventService.getAllEvents()
-    //             .then(events => {
-    //                 const filterEvents = events.filter(x => x.creatorId === creatorId);
-    //                 this.setState({ events: filterEvents });
-    //             });
-    //     } else {
-    //         const result = events.filter(x => x.name.toLowerCase().includes(search));
-    //         this.setState({ events: result });
-    //     }
-    // };
-
     addResult = () => {
         const { dictionary } = this.state;
 
@@ -61,18 +44,7 @@ class CreateResult extends React.Component {
             <Fragment>
                 {event ?
                     <div className="container">
-                        <div className="row" style={{ marginBottom: 20, marginTop: 30 }}>
-                            <div className="col-md-4 offset-md-4">
-                                <div className="form-group input-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text"><i class="fa fa-search"></i></span>
-                                    </div>
-                                    <input className="form-control mr-sm-2" type="search" name="search" onChange={this.searchEvents} placeholder="Search Event" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <table className="table table-bordered table-striped" style={{ marginBottom: 50 }}>
+                        <table className="table table-bordered table-striped" style={{ marginTop: 30, marginBottom: 50 }}>
                             <thead className="thead-dark">
                                 <tr>
                                     <th className="text-center">Username</th>
