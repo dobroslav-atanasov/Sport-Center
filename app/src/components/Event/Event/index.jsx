@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import eventService from '../../../services/eventService';
 import authService from '../../../services/authService';
 import Participants from '../../Participants';
@@ -71,9 +72,11 @@ class Event extends React.Component {
                                         </ul>
                                         <div className="card-body">
                                             {isValidEvent ?
-                                                <button className="btn btn-success">
-                                                    Result
-                                                </button>
+                                                <Link to={`/result/${event._id}`}>
+                                                    <button className="btn btn-success">
+                                                        Result
+                                                    </button>
+                                                </Link>
                                                 : isCreator ?
                                                     <button className="btn btn-warning">
                                                         You can not participate!
