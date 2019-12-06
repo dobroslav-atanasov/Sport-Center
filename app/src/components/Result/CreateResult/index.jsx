@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Loading from '../../Loading';
 import eventService from '../../../services/eventService';
+import resultService from '../../../services/resultService';
 
 class CreateResult extends React.Component {
     constructor(props) {
@@ -37,21 +38,13 @@ class CreateResult extends React.Component {
 
     addResult = () => {
         const { dictionary } = this.state;
-        const { date } = this.state.event;
-        const { event } = this.state;
-        const day = new Date(date).getDate();
-        const month = new Date(date).getMonth() + 1;
-        const year = new Date(date).getFullYear();
 
         for (const id in dictionary) {
             const value = dictionary[id];
-            const parts = value.split(':');
-            const str = `${year}-${month}-${day} ${parts[0]}:${parts[1]}:${parts[2]}`;
-            const resultDate = new Date(str);
-
-            
+            resultService.add(this.state.eventId, id, value);
         };
-        // this.props.history.push('/');
+
+        this.props.history.push('/');
     };
 
     changeHandler = (e) => {
