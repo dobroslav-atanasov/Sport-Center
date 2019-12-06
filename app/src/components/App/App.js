@@ -13,9 +13,11 @@ import CreateEvent from '../Event/CreateEvent';
 import routes from '../hocs/routes';
 import Users from '../User/Users';
 import Events from '../Event/Events';
-import MyEvents from '../Event/MyEvents';
+import MyCreatedEvents from '../Event/MyCreatedEvents';
 import Event from '../Event/Event';
 import CreateResult from '../Result/CreateResult';
+import MyEvents from '../Event/MyEvents';
+import MyResults from '../Result/MyResults';
 
 class App extends React.Component {
   constructor(props) {
@@ -44,9 +46,11 @@ class App extends React.Component {
           <Route exact path="/create-event" component={adminRoute(CreateEvent)} />
           <Route exact path="/users" component={superAdminRoute(Users)} />
           <Route exact path="/events" component={superAdminRoute(Events)} />
-          <Route exact path="/my-events" component={adminRoute(MyEvents)} />
+          <Route exact path="/my-created-events" component={adminRoute(MyCreatedEvents)} />
           <Route exact path="/event/:id" component={userRoute(Event)} />
           <Route exact path="/add-result/:id" component={adminRoute(CreateResult)} />
+          <Route exact path="/my-events" component={userRoute(MyEvents)} />
+          <Route exact path="/my-results" component={userRoute(MyResults)} />
           <Route component={NotFound} />
         </Switch>
         <Route path="/" component={Footer} />
