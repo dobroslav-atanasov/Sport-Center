@@ -12,12 +12,13 @@ import CreateTown from '../CreateTown';
 import CreateEvent from '../Event/CreateEvent';
 import routes from '../hocs/routes';
 import Users from '../User/Users';
-import Events from '../Event/Events';
+import SuperAdminEvents from '../Event/SuperAdminEvents';
 import MyCreatedEvents from '../Event/MyCreatedEvents';
 import Event from '../Event/Event';
 import CreateResult from '../Result/CreateResult';
-import MyEvents from '../Event/MyEvents';
+import Events from '../Event/Events';
 import MyResults from '../Result/MyResults';
+import Result from '../Result/Result';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,12 +46,13 @@ class App extends React.Component {
           <Route exact path="/add-town" component={superAdminRoute(CreateTown)} />
           <Route exact path="/create-event" component={adminRoute(CreateEvent)} />
           <Route exact path="/users" component={superAdminRoute(Users)} />
-          <Route exact path="/events" component={superAdminRoute(Events)} />
+          <Route exact path="/super-admin-events" component={superAdminRoute(SuperAdminEvents)} />
           <Route exact path="/my-created-events" component={adminRoute(MyCreatedEvents)} />
           <Route exact path="/event/:id" component={userRoute(Event)} />
           <Route exact path="/add-result/:id" component={adminRoute(CreateResult)} />
-          <Route exact path="/my-events" component={userRoute(MyEvents)} />
+          <Route exact path="/events" component={userRoute(Events)} />
           <Route exact path="/my-results" component={userRoute(MyResults)} />
+          <Route exact path="/result/:id" component={userRoute(Result)} />
           <Route component={NotFound} />
         </Switch>
         <Route path="/" component={Footer} />
