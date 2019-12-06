@@ -1,5 +1,6 @@
 const eventModel = require('../models/event');
 const townModel = require('../models/town');
+const userModel = require('../models/user');
 
 module.exports = {
     get: {
@@ -43,7 +44,10 @@ module.exports = {
         signUp: (req, res, next) => {
             const { eventId, userId } = req.body;
             eventModel.updateOne({ _id: eventId }, { $push: { users: userId } })
-                .then(data => res.send(data))
+                .then(data => {
+                    userModel.updateOne({ _id: userId }, { $push: { events: eventId } })
+                        .then(() => res.send(data));
+                })
                 .catch(next);
         },
 

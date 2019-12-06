@@ -1,31 +1,22 @@
 const resultModel = require('../models/result');
+const eventModel = require('../models/event');
+const userModel = require('../models/user');
 
 module.exports = {
-    // get: {
-    //     getAllEvents: (req, res, next) => {
-    //         eventModel.find({}).populate('town')
-    //             .then(events => res.send(events))
-    //             .catch(next);
-    //     },
-
-    //     getEvent: (req, res, next) => {
-    //         const id = req.params.id;
-    //         eventModel.findById(id).populate('town').populate('users')
-    //             .then(event => res.send(event))
-    //             .catch(next);
-    //     }
-    // },
-
     post: {
         add: (req, res, next) => {
-            const { userId, evenId, date } = req.body;
-            // townModel.findOne({ name: town })
-            //     .then(t => {
-            //         const townId = t.id;
-            //         eventModel.create({ name, location, date, description, town: townId, creatorId })
-            //             .then((event) => res.send(event))
-            //             .catch(next);
-            //     });
+            const { eventId, userId, time } = req.body;
+            resultModel.create({ event: eventId, user: userId, time: time })
+                .then(result => {
+                    eventModel.updateOne({ _id: eventId }, { $push: { results: result._id } })
+                        .then(event => {
+                            userModel.updateOne({ _id: userId }, { $push: { results: result._id } })
+                                .then(user => {
+                                    res.send(result);
+                                });
+                        });
+                })
+                .catch(next);
         }
     }
 };

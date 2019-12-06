@@ -45,10 +45,6 @@ const userSchema = new mongoose.Schema({
     results: [{
         type: mongoose.Types.ObjectId,
         ref: 'Result'
-    }],
-    comments: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Comment'
     }]
 });
 

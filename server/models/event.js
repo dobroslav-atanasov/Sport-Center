@@ -25,17 +25,13 @@ const eventSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
-    result: {
+    results: [{
         type: mongoose.Types.ObjectId,
         ref: 'Result'
-    },
+    }],
     users: [{
         type: mongoose.Types.ObjectId,
         ref: 'User'
-    }],
-    comments: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Comment'
     }]
 });
 

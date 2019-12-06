@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const resultSchema = new mongoose.Schema({
     event: {
-        type: ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Event'
     },
     user: {
-        type: ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'User'
     },
     time: {
-        type: Date,
+        type: String,
         required: true
     }
 });
