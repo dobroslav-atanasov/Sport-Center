@@ -50,6 +50,10 @@ class MyResults extends React.Component {
                             </div>
                         </div>
 
+                        <div className="text-center" style={{ marginBottom: 30 }}>
+                            <h3>My Results</h3>
+                        </div>
+
                         <table class="table table-bordered bg-light">
                             <thead className="thead-dark">
                                 <tr>
