@@ -73,6 +73,13 @@ const eventService = {
                 userId
             }
         }).then(res => res.data);
+    },
+
+    getEventsByUserId: function (userId) {
+        return axios({
+            method: 'GET',
+            url: `http://localhost:3333/api/event/get-user-events/${userId}`
+        }).then(res => res.data);
     }
 };
 
