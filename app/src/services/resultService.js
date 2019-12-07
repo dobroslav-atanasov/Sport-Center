@@ -20,6 +20,13 @@ const resultService = {
             method: 'GET',
             url: `http://localhost:3333/api/result/get-results/${id}`
         }).then(res => res.data);
+    },
+
+    getResultsByUser: function (id) {
+        return axios({
+            method: 'GET',
+            url: `http://localhost:3333/api/result/get-my-results/${id}`
+        }).then(res => res.data);
     }
 };
 
