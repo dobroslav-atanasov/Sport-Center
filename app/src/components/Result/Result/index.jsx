@@ -14,34 +14,50 @@ class Result extends React.Component {
     componentDidMount = () => {
         resultService.getResultsByEvent(this.state.id)
             .then(results => {
-                this.setState({ results: results });
-            });
-
-        eventService.getEvent(this.state.id)
-            .then(event => {
-                console.log(event);
-                this.setState({ event: event });
+                eventService.getEvent(this.state.id)
+                    .then(event => {
+                        this.setState({ results: results, event: event });
+                    });
             });
     };
 
-    render() {
+    generateUserResults = () => {
         const { event, results } = this.state;
+        if (results) {
+            let users = [];
+            const day = new Date(event.date).getDate();
+            const month = new Date(event.date).getMonth();
+            const year = new Date(event.date).getFullYear();
+
+            for (const result of results) {
+                const timeParts = result.time.split(':');
+                const user = {
+                    username: result.user.username,
+                    fullName: `${result.user.firstName} ${result.user.lastName}`,
+                    age: result.user.age,
+                    gender: result.user.gender,
+                    time: new Date(year, month, day, +timeParts[0], +timeParts[1], +timeParts[2])
+                };
+                users.push(user);
+            };
+
+            users.sort(function (d1, d2) {
+                return new Date(d1.time) - new Date(d2.time);
+            });
+            return users;
+        }
+
+        return undefined;
+    };
+
+    render() {
+        const { event } = this.state;
+        const users = this.generateUserResults();
         return (
             <Fragment>
                 {event ?
-                    <div className="container">
-                        <div className="row" style={{ marginTop: 30, marginBottom: 20 }}>
-                            <div className="col-md-4 offset-md-4">
-                                <div className="form-group input-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text"><i class="fa fa-search"></i></span>
-                                    </div>
-                                    <input className="form-control mr-sm-2" type="search" name="search" onChange={this.searchEvents} placeholder="Search Username" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="text-center">
+                    <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
+                        <div className="text-center" style={{ marginBottom: 20 }}>
                             <h3>{event.name}</h3>
                         </div>
 
@@ -57,11 +73,17 @@ class Result extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {events.map(e => <tr>
-                                    <td className="text-center align-middle" key={e.name}>{e.name}</td>
-                                    <td className="text-center align-middle" key={e.date.toString()}>{new Date(e.date).getDate()}-{new Date(e.date).getMonth() + 1}-{new Date(e.date).getFullYear()}</td>
-                                    <td className="text-center align-middle" key={e.town.name.toString()}>{e.town.name}</td>
-                                </tr>)} */}
+                                {users.map((u, index) =>
+                                    <tr>
+                                        <td className="text-center align-middle" key={u.rank + u.username}>{index + 1}</td>
+                                        <td className="text-center align-middle" key={u.username}>{u.username}</td>
+                                        <td className="text-center align-middle" key={u.fullName}>{u.fullName}</td>
+                                        <td className="text-center align-middle" key={u.username + u.age}>{u.age}</td>
+                                        <td className="text-center align-middle" key={u.username + u.gender}>{u.gender}</td>
+                                        <td className="text-center align-middle" key={u.username + index}>
+                                            {new Date(u.time).getHours()}:{new Date(u.time).getMinutes()}:{new Date(u.time).getSeconds()}</td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>
