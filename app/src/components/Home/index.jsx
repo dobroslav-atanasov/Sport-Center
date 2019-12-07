@@ -18,6 +18,21 @@ class Home extends React.Component {
             });
     };
 
+    searchEvents = (e) => {
+        e.preventDefault();
+        const { events } = this.state;
+        const search = e.target.value.toLowerCase();
+        if (search === '') {
+            eventService.getAllEvents()
+                .then(events => {
+                    this.setState({ events: events });
+                });
+        } else {
+            const result = events.filter(x => x.name.toLowerCase().includes(search));
+            this.setState({ events: result });
+        }
+    };
+
     render() {
         const user = authService.getUserInfo();
         const { events } = this.state;
@@ -25,7 +40,17 @@ class Home extends React.Component {
             <Fragment>
                 {user ?
                     events ?
-                        <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
+                        <div className="container" style={{ marginBottom: 50 }}>
+                            <div className="row" style={{ marginTop: 30, marginBottom: 20 }}>
+                                <div className="col-md-4 offset-md-4">
+                                    <div className="form-group input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text"><i class="fa fa-search"></i></span>
+                                        </div>
+                                        <input className="form-control mr-sm-2" type="search" name="search" onChange={this.searchEvents} placeholder="Search Event" />
+                                    </div>
+                                </div>
+                            </div>
                             <div className="row align-items-center">
                                 {events.map(e => <EventCard id={e._id}
                                     name={e.name}
