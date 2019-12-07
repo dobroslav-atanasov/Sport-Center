@@ -44,6 +44,7 @@ class Result extends React.Component {
             users.sort(function (d1, d2) {
                 return new Date(d1.time) - new Date(d2.time);
             });
+            
             return users;
         }
 
