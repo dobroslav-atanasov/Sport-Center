@@ -54,10 +54,11 @@ class MyResults extends React.Component {
                             <h3>My Results</h3>
                         </div>
 
-                        <table class="table table-bordered bg-light">
+                        <table className="table table-bordered bg-light">
                             <thead className="thead-dark">
                                 <tr>
                                     <th className="text-center">Event</th>
+                                    <th className="text-center">Town</th>
                                     <th className="text-center">Date</th>
                                     <th className="text-center">Result</th>
                                 </tr>
@@ -66,6 +67,7 @@ class MyResults extends React.Component {
                                 {results.map(r =>
                                     <tr>
                                         <td className="text-center align-middle" key={r._id}>{r.event.name}</td>
+                                        <td className="text-center align-middle" key={r._id + r.event.town.name}>{r.event.town.name}</td>
                                         <td className="text-center align-middle" key={r._id + r.event.date}>
                                             {new Date(r.event.date).getDate()}-{new Date(r.event.date).getMonth() + 1}-{new Date(r.event.date).getFullYear()}</td>
                                         <td className="text-center align-middle" key={r._id + r.time}>{r.time}</td>

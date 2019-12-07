@@ -1,12 +1,28 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from '../../Loading';
+import eventService from '../../../services/eventService';
+import authService from '../../../services/authService';
 
 class MyEvents extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    };
+
+    componentDidMount = () => {
+        const userId = authService.getUserInfo().id;
+        eventService.getEventsByUserId(userId)
+            .then(events => {
+                this.setState({ events: events });
+            });
+    };
 
     render() {
+        const { events } = this.state;
         return (
             <Fragment>
-                {/* {results ? */}
+                {events ?
                     <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
                         <div className="row" style={{ marginBottom: 20, marginTop: 30 }}>
                             <div className="col-md-4 offset-4">
@@ -27,19 +43,31 @@ class MyEvents extends React.Component {
                             <thead className="thead-dark">
                                 <tr>
                                     <th className="text-center">Event</th>
+                                    <th className="text-center">Town</th>
                                     <th className="text-center">Date</th>
-                                    <th className="text-center">Result</th>
+                                    <th className="text-center">Participants</th>
+                                    <th className="text-center">View Result</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {results.map(r =>
+                                {events.map(e =>
                                     <tr>
-                                        <td className="text-center align-middle" key={r._id}>{r.event.name}</td>
-                                        <td className="text-center align-middle" key={r._id + r.event.date}>
-                                            {new Date(r.event.date).getDate()}-{new Date(r.event.date).getMonth() + 1}-{new Date(r.event.date).getFullYear()}</td>
-                                        <td className="text-center align-middle" key={r._id + r.time}>{r.time}</td>
+                                        <td className="text-center align-middle" key={e._id + e.name}>{e.name}</td>
+                                        <td className="text-center align-middle" key={e._id + e.town.name}>{e.town.name}</td>
+                                        <td className="text-center align-middle" key={e._id + e.date}>
+                                            {new Date(e.date).getDate()}-{new Date(e.date).getMonth() + 1}-{new Date(e.date).getFullYear()}</td>
+                                        <td className="text-center align-middle" key={e._id + e.users}>{e.users.length}</td>
+                                        <td className="text-center align-middle" key={e._id}>
+                                            {e.results.length !== 0 ?
+                                                <Link to={`/result/${e._id}`}>
+                                                    <button className="btn btn-success">
+                                                        Result
+                                                </button>
+                                                </Link>
+                                                : 'Future Event'}
+                                        </td>
                                     </tr>
-                                )} */}
+                                )}
                             </tbody>
                         </table>
                     </div>
