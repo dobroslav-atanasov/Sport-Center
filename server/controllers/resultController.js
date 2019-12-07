@@ -6,7 +6,9 @@ module.exports = {
     get: {
         getResultByEventId: (req, res, next) => {
             const eventId = req.params.id;
-            resultModel.find({ event: eventId }).populate('user').populate('event')
+            resultModel.find({ event: eventId })
+                .populate('user')
+                .populate('event')
                 .then(results => {
                     res.send(results);
                 })
@@ -15,7 +17,15 @@ module.exports = {
 
         getResultByUserId: (req, res, next) => {
             const userId = req.params.id;
-            resultModel.find({ user: userId }).populate('user').populate('event')
+            resultModel.find({ user: userId })
+                .populate('user')
+                .populate({
+                    path: 'event',
+                    populate: {
+                        path: 'town',
+                        model: 'Town'
+                    }
+                })
                 .then(results => {
                     res.send(results);
                 })

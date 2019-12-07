@@ -13,4 +13,6 @@ router.put('/sign-up', eventController.put.signUp);
 
 router.put('/refuse', eventController.put.refuse);
 
+router.get('/get-user-events/:id', eventController.get.getEventsByUserId);
+
 module.exports = router;

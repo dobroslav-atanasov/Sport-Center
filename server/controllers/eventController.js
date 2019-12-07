@@ -5,15 +5,30 @@ const userModel = require('../models/user');
 module.exports = {
     get: {
         getAllEvents: (req, res, next) => {
-            eventModel.find({}).populate('town')
+            eventModel.find({})
+                .populate('town')
                 .then(events => res.send(events))
                 .catch(next);
         },
 
         getEvent: (req, res, next) => {
             const id = req.params.id;
-            eventModel.findById(id).populate('town').populate('users')
+            eventModel.findById(id)
+                .populate('town')
+                .populate('users')
                 .then(event => res.send(event))
+                .catch(next);
+        },
+
+        getEventsByUserId: (req, res, next) => {
+            const userId = req.params.id;
+            eventModel.find({})
+                .where('users')
+                .equals(userId)
+                .populate('town')
+                .populate('users')
+                .populate('results')
+                .then(events => res.send(events))
                 .catch(next);
         }
     },
