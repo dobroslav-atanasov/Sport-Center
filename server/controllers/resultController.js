@@ -11,6 +11,15 @@ module.exports = {
                     res.send(results);
                 })
                 .catch(next);
+        },
+
+        getResultByUserId: (req, res, next) => {
+            const userId = req.params.id;
+            resultModel.find({ user: userId }).populate('user').populate('event')
+                .then(results => {
+                    res.send(results);
+                })
+                .catch(next);
         }
     },
 
