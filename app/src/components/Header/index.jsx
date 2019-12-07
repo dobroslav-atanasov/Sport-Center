@@ -30,7 +30,7 @@ const Header = () => {
                             <Link to="/my-created-events" className="nav-link">My Created Events</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/events" className="nav-link">Events</Link>
+                            <Link to="/my-events" className="nav-link">My Events</Link>
                         </li>
                         <li className="nav-item active">
                             <Link to="/my-results" className="nav-link">My Results</Link>
@@ -40,7 +40,7 @@ const Header = () => {
                 {(user !== undefined && user.role === 'User') &&
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <Link to="/events" className="nav-link">Events</Link>
+                            <Link to="/my-events" className="nav-link">My Events</Link>
                         </li>
                         <li className="nav-item active">
                             <Link to="/my-results" className="nav-link">My Results</Link>

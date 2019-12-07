@@ -16,7 +16,7 @@ import SuperAdminEvents from '../Event/SuperAdminEvents';
 import MyCreatedEvents from '../Event/MyCreatedEvents';
 import Event from '../Event/Event';
 import CreateResult from '../Result/CreateResult';
-import Events from '../Event/Events';
+import MyEvents from '../Event/MyEvents';
 import MyResults from '../Result/MyResults';
 import Result from '../Result/Result';
 
@@ -50,7 +50,7 @@ class App extends React.Component {
           <Route exact path="/my-created-events" component={adminRoute(MyCreatedEvents)} />
           <Route exact path="/event/:id" component={userRoute(Event)} />
           <Route exact path="/add-result/:id" component={adminRoute(CreateResult)} />
-          <Route exact path="/events" component={userRoute(Events)} />
+          <Route exact path="/my-events" component={userRoute(MyEvents)} />
           <Route exact path="/my-results" component={userRoute(MyResults)} />
           <Route exact path="/result/:id" component={userRoute(Result)} />
           <Route component={NotFound} />
