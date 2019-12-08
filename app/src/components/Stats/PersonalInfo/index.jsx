@@ -14,6 +14,8 @@ const PersonalInfo = ({ user }) => {
                     <h6 className="card-title"><b>Age:</b> {user.age}</h6>
                     <h6 className="card-title"><b>Gender:</b> {user.gender}</h6>
                     <h6 className="card-title"><b>Total Points:</b> {user.points}</h6>
+                    <h6 className="card-title"><b>Total Participants</b> {user.events.length}</h6>
+                    <h6 className="card-title"><b>Total Kilometers:</b> {user.events.length * 5}</h6>
                 </div>
             </div>
         </Fragment>

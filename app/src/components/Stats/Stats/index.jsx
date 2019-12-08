@@ -3,6 +3,7 @@ import PersonalInfo from '../PersonalInfo';
 import userService from '../../../services/userService';
 import authService from '../../../services/authService';
 import Loading from '../../Loading';
+import PersonalStats from '../PersonalStats';
 
 class Stats extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class Stats extends React.Component {
                                 <PersonalInfo user={user} />
                             </div>
                             <div className="col-md-7">
-                                Statistics
+                                <PersonalStats />
                             </div>
                         </div>
                     </div >
