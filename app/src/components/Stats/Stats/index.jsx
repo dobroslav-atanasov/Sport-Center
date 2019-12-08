@@ -15,7 +15,6 @@ class Stats extends React.Component {
         const userId = authService.getUserInfo().id;
         userService.getUser(userId)
             .then(user => {
-                console.log(user);
                 this.setState({ user: user });
             });
     };
@@ -31,7 +30,7 @@ class Stats extends React.Component {
                                 <PersonalInfo user={user} />
                             </div>
                             <div className="col-md-7">
-                                <PersonalStats />
+                                <PersonalStats user={user}/>
                             </div>
                         </div>
                     </div >
