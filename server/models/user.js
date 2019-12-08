@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
         enum: ['Male', 'Female'],
         required: true
     },
+    points: {
+        type: Number,
+        default: 0
+    },
     role: {
         type: String,
         enum: ['SuperAdmin', 'Admin', 'User'],
