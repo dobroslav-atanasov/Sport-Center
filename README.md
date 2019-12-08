@@ -2,7 +2,7 @@
 
 Sport Center is a web application for sport events around the world.
 
-### Installing
+### Installing the App
 
 1. Clone the repository
 
@@ -22,6 +22,25 @@ npm install
 npm start
 ```
  
+4. The app listens on port 3000
+
+```
+http://localhost:3000/
+```
+
+### Installing the Server
+
+1. Open server folder and install npm packages
+
+```
+npm install
+```
+
+2. Start server. The server linstens on port 3333
+
+```
+node index
+```
 
 ## Authors
 
