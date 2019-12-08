@@ -35,8 +35,8 @@ module.exports = {
 
     post: {
         add: (req, res, next) => {
-            const { eventId, userId, time } = req.body;
-            resultModel.create({ event: eventId, user: userId, time: time })
+            const { eventId, userId, time, rank } = req.body;
+            resultModel.create({ event: eventId, user: userId, time: time, rank: rank })
                 .then(result => {
                     eventModel.updateOne({ _id: eventId }, { $push: { results: result._id } })
                         .then(event => {

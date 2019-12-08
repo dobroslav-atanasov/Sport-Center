@@ -20,6 +20,15 @@ module.exports = {
                     res.send(usernames);
                 })
                 .catch(next);
+        },
+
+        getUser: (req, res, next) => {
+            const userId = req.params.id;
+            userModel.findById(userId)
+                .then(user => {
+                    res.send(user);
+                })
+                .catch(next);
         }
     },
 
