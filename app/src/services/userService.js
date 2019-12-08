@@ -73,6 +73,13 @@ const userService = {
                 username
             }
         }).then(res => res.data);
+    },
+
+    getUser: function (userId){
+        return axios({
+            method: 'GET',
+            url: `http://localhost:3333/api/user/get-user/${userId}`,
+        }).then(res => res.data);
     }
 };
 

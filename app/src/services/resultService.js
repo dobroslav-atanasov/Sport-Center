@@ -1,14 +1,15 @@
 import axios from 'axios';
 
 const resultService = {
-    add: function (eventId, userId, time) {
+    add: function (eventId, userId, time, rank) {
         return axios({
             method: 'POST',
             url: 'http://localhost:3333/api/result/add',
             data: {
                 eventId,
                 userId,
-                time
+                time,
+                rank
             }
         }).then(res => {
             console.log(res.data);
