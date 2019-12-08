@@ -4,21 +4,24 @@ Sport Center is a web application for sport events around the world.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+1. Clone the repository
 
 ```
-Give the example
+git clone git@github.com:dobroslav-atanasov/Sport-Center.git
 ```
 
-And repeat
+2. Open app folder and install npm packages
 
 ```
-until finished
+npm install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+3. Start the app
+
+```
+npm start
+```
+ 
 
 ## Authors
 
