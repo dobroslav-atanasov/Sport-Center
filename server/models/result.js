@@ -10,7 +10,11 @@ const resultSchema = new mongoose.Schema({
         ref: 'User'
     },
     time: {
-        type: String,
+        type: Date,
+        required: true
+    },
+    rank: {
+        type: Number,
         required: true
     }
 });
