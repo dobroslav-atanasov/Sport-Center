@@ -75,7 +75,7 @@ class Events extends React.Component {
                                     <td className="text-center align-middle" key={e.name.toString() + e.town.name.toString()}>
                                         <button className="btn btn-danger btn-sm" id={e._id} onClick={this.deleteEvent}>
                                             Delete Event
-                                </button>
+                                        </button>
                                     </td>
                                 </tr>)}
                             </tbody>

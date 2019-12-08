@@ -61,6 +61,7 @@ class MyResults extends React.Component {
                                     <th className="text-center">Town</th>
                                     <th className="text-center">Date</th>
                                     <th className="text-center">Result</th>
+                                    <th className="text-center">Rank</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,7 +71,9 @@ class MyResults extends React.Component {
                                         <td className="text-center align-middle" key={r._id + r.event.town.name}>{r.event.town.name}</td>
                                         <td className="text-center align-middle" key={r._id + r.event.date}>
                                             {new Date(r.event.date).getDate()}-{new Date(r.event.date).getMonth() + 1}-{new Date(r.event.date).getFullYear()}</td>
-                                        <td className="text-center align-middle" key={r._id + r.time}>{r.time}</td>
+                                        <td className="text-center align-middle" key={r._id + r.time}>
+                                            {new Date(r.time).getHours()}:{new Date(r.time).getMinutes()}:{new Date(r.time).getSeconds()}</td>
+                                        <td className="text-center align-middle" key={r._id + r.rank}>{r.rank}</td>
                                     </tr>
                                 )}
                             </tbody>

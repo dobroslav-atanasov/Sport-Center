@@ -20,11 +20,33 @@ class CreateResult extends React.Component {
     };
 
     addResult = () => {
-        const { dictionary } = this.state;
+        const { dictionary, event, eventId } = this.state;
+        const day = new Date(event.date).getDate();
+        const month = new Date(event.date).getMonth();
+        const year = new Date(event.date).getFullYear();
 
-        for (const id in dictionary) {
-            const value = dictionary[id];
-            resultService.add(this.state.eventId, id, value);
+        let results = [];
+        for (const userId in dictionary) {
+            const value = dictionary[userId];
+            const parts = value.split(':');
+            const time = new Date(year, month, day, +parts[0], +parts[1], +parts[2]);
+
+            let result = {
+                event: eventId,
+                user: userId,
+                time: time
+            };
+            results.push(result);
+        };
+
+        results.sort(function (d1, d2) {
+            return new Date(d1.time) - new Date(d2.time);
+        });
+
+        let rank = 1;
+        for (const result of results) {
+            resultService.add(result.event, result.user, result.time, rank);
+            rank++;
         };
 
         this.props.history.push('/');
@@ -45,8 +67,11 @@ class CreateResult extends React.Component {
         return (
             <Fragment>
                 {event ?
-                    <div className="container">
-                        <table className="table table-bordered table-striped" style={{ marginTop: 30, marginBottom: 50 }}>
+                    <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
+                        <div className="text-center" style={{ marginBottom: 30 }}>
+                            <h3>Add Event Results: {event.name}</h3>
+                        </div>
+                        <table className="table table-bordered table-striped" >
                             <thead className="thead-dark">
                                 <tr>
                                     <th className="text-center">Username</th>

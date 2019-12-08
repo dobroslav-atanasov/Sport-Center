@@ -74,7 +74,7 @@ class Home extends React.Component {
                                 <Link to="/register">
                                     <button className="btn btn-danger btn-lg">
                                         Join
-                                </button>
+                                    </button>
                                 </Link>
                             </div>
                         </div>

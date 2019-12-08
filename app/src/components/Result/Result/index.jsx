@@ -22,21 +22,17 @@ class Result extends React.Component {
     };
 
     generateUserResults = () => {
-        const { event, results } = this.state;
+        const { results } = this.state;
         if (results) {
             let users = [];
-            const day = new Date(event.date).getDate();
-            const month = new Date(event.date).getMonth();
-            const year = new Date(event.date).getFullYear();
 
             for (const result of results) {
-                const timeParts = result.time.split(':');
                 const user = {
                     username: result.user.username,
                     fullName: `${result.user.firstName} ${result.user.lastName}`,
                     age: result.user.age,
                     gender: result.user.gender,
-                    time: new Date(year, month, day, +timeParts[0], +timeParts[1], +timeParts[2])
+                    time: new Date(result.time)
                 };
                 users.push(user);
             };
@@ -44,7 +40,7 @@ class Result extends React.Component {
             users.sort(function (d1, d2) {
                 return new Date(d1.time) - new Date(d2.time);
             });
-            
+
             return users;
         }
 
