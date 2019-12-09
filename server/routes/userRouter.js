@@ -7,6 +7,8 @@ router.get('/get-user/:id', userController.get.getUser);
 
 router.get('/usernames', userController.get.getUsernames);
 
+router.get('/users-by-points', userController.get.getUsersOrderByPoints);
+
 router.post('/register', userController.post.register);
 
 router.post('/login', userController.post.login);

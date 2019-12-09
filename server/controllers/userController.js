@@ -37,6 +37,16 @@ module.exports = {
                     res.send(user);
                 })
                 .catch(next);
+        },
+
+        getUsersOrderByPoints: (req, res, next) => {
+            userModel.find()
+                .sort({ points: 'desc' })
+                .then((users) => {
+                    const u = users.filter(u => u.role !== 'SuperAdmin');
+                    res.send(u);
+                })
+                .catch(next)
         }
     },
 
