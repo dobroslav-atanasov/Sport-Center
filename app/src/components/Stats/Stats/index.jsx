@@ -12,7 +12,7 @@ class Stats extends React.Component {
     };
 
     componentDidMount = () => {
-        const userId = authService.getUserInfo().id;
+        const userId = authService.getUserInfo().id;        
         userService.getUser(userId)
             .then(user => {
                 this.setState({ user: user });
