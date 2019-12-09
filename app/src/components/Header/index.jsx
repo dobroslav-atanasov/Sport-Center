@@ -38,6 +38,9 @@ const Header = () => {
                         <li className="nav-item active">
                             <Link to="/stats" className="nav-link">Stats</Link>
                         </li>
+                        <li className="nav-item active">
+                            <Link to="/standings" className="nav-link">Standings</Link>
+                        </li>
                     </ul>
                 }
                 {(user !== undefined && user.role === 'User') &&
@@ -52,7 +55,7 @@ const Header = () => {
                             <Link to="/stats" className="nav-link">Stats</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/my-results" className="nav-link">Standings</Link>
+                            <Link to="/standings" className="nav-link">Standings</Link>
                         </li>
                     </ul>
                 }

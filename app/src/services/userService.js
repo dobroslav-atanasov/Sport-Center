@@ -80,6 +80,13 @@ const userService = {
             method: 'GET',
             url: `http://localhost:3333/api/user/get-user/${userId}`,
         }).then(res => res.data);
+    },
+
+    getUsersByPoints: function (){
+        return axios({
+            method: 'GET',
+            url: 'http://localhost:3333/api/user/users-by-points',
+        }).then(res => res.data);
     }
 };
 

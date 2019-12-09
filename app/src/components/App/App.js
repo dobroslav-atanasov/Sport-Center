@@ -20,6 +20,7 @@ import MyEvents from '../Event/MyEvents';
 import MyResults from '../Result/MyResults';
 import Result from '../Result/Result';
 import Stats from '../Stats/Stats';
+import Standings from '../Standings';
 
 class App extends React.Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class App extends React.Component {
           <Route exact path="/my-results" component={userRoute(MyResults)} />
           <Route exact path="/result/:id" component={userRoute(Result)} />
           <Route exact path="/stats" component={userRoute(Stats)} />
+          <Route exact path="/standings" component={userRoute(Standings)} />
           <Route component={NotFound} />
         </Switch>
         <Route path="/" component={Footer} />
