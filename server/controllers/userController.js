@@ -25,9 +25,15 @@ module.exports = {
         getUser: (req, res, next) => {
             const userId = req.params.id;
             userModel.findById(userId)
-                .populate('results')
+                .populate({ 
+                    path:'results',
+                    populate: {
+                        path: 'event',
+                        model: 'Event'
+                    }
+                })
                 .populate({
-                    path: 'event',
+                    path: 'events',
                     populate: {
                         path: 'town',
                         model: 'Town'
