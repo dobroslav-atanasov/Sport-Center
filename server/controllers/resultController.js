@@ -35,12 +35,12 @@ module.exports = {
 
     post: {
         add: (req, res, next) => {
-            const { eventId, userId, time, rank, points } = req.body;
+            const { eventId, userId, time, rank, score } = req.body;
             resultModel.create({ event: eventId, user: userId, time: time, rank: rank })
                 .then(result => {
                     eventModel.updateOne({ _id: eventId }, { $push: { results: result._id } })
                         .then(event => {
-                            userModel.updateOne({ _id: userId }, { $push: { results: result._id } }, { $inc: { points: points } })
+                            userModel.updateOne({ _id: userId }, { $push: { results: result._id }, $inc: { points: parseInt(score) } })
                                 .then(user => {
                                     res.send(result);
                                 });
