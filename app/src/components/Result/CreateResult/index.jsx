@@ -45,8 +45,8 @@ class CreateResult extends React.Component {
 
         let rank = 1;
         for (const result of results) {
-            const points = (50 / rank).toFixed(0);
-            resultService.add(result.event, result.user, result.time, rank, points);
+            const score = (50 / rank).toFixed(0);
+            resultService.add(result.event, result.user, result.time, rank, score);
             rank++;
         };
 
@@ -63,8 +63,6 @@ class CreateResult extends React.Component {
 
     render() {
         const { event } = this.state;
-        const { errors } = this.state;
-        console.log(errors);
         return (
             <Fragment>
                 {event ?
