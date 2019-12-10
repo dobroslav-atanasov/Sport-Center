@@ -6,7 +6,10 @@ import validationService from '../services/validationService';
 describe('CreateTown component test', () => {
     const wrapper = shallow(<CreateTown />);
 
-    it('Should have input for username', () => {
-        expect(wrapper.find('input#username')).toHaveLength(1);
+    it('Should have input for name', () => {
+        const instance = wrapper.instance();
+        instance.componentDidMount();
+        console.log(wrapper.find('input#name'));
+        expect(wrapper.find('input#name')).toHaveLength(1);
     });
 });

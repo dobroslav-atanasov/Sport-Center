@@ -45,7 +45,8 @@ class CreateResult extends React.Component {
 
         let rank = 1;
         for (const result of results) {
-            resultService.add(result.event, result.user, result.time, rank);
+            const points = (50 / rank).toFixed(0);
+            resultService.add(result.event, result.user, result.time, rank, points);
             rank++;
         };
 
