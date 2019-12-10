@@ -84,7 +84,7 @@ class CreateTown extends React.Component {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text"><i className="fa fa-building"></i></span>
                                                 </div>
-                                                <input type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Town" />
+                                                <input id="name" type="text" className="form-control" name="name" onChange={this.changeHandler} placeholder="Town" />
                                             </div>
                                         </div>
                                         <div className="col-md-2">
@@ -101,7 +101,7 @@ class CreateTown extends React.Component {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text"> <i className="fa fa-globe"></i> </span>
                                                 </div>
-                                                <input type="text" className="form-control" name="country" onChange={this.changeHandler} placeholder="Country" />
+                                                <input id="country" type="text" className="form-control" name="country" onChange={this.changeHandler} placeholder="Country" />
                                             </div>
                                         </div>
                                         <div className="col-md-2">
