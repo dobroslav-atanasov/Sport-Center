@@ -12,7 +12,6 @@ class CreateTown extends React.Component {
             name: '',
             country: '',
             imageUrl: '',
-            towns: undefined,
             errors: {
                 name: constants.createTown.TOWN_NAME_REQUIRED,
                 country: constants.createTown.COUNTRY_NAME_REQUIRED,
@@ -118,7 +117,7 @@ class CreateTown extends React.Component {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text"> <i class="fa fa-image"></i> </span>
                                                 </div>
-                                                <input type="text" className="form-control" name="imageUrl" onChange={this.changeHandler} placeholder="Image Url" />
+                                                <input id="imageUrl" type="text" className="form-control" name="imageUrl" onChange={this.changeHandler} placeholder="Image Url" />
                                             </div>
                                         </div>
                                         <div className="col-md-2">

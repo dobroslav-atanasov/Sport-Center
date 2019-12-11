@@ -7,31 +7,31 @@ describe('Register component test', () => {
     const wrapper = shallow(<Register />);
 
     it('Should have input for username', () => {
-        expect(wrapper.find('input#username')).toHaveLength(1);
+        expect(wrapper.find('input#username').length).toEqual(1);
     });
 
     it('Should have input for password', () => {
-        expect(wrapper.find('input#password')).toHaveLength(1);
+        expect(wrapper.find('input#password').length).toEqual(1);
     });
 
     it('Should have input for confirm password', () => {
-        expect(wrapper.find('input#confirmPassword')).toHaveLength(1);
+        expect(wrapper.find('input#confirmPassword').length).toEqual(1);
     });
 
     it('Should have input for email', () => {
-        expect(wrapper.find('input#email')).toHaveLength(1);
+        expect(wrapper.find('input#email').length).toEqual(1);
     });
 
     it('Should have input for first name', () => {
-        expect(wrapper.find('input#firstName')).toHaveLength(1);
+        expect(wrapper.find('input#firstName').length).toEqual(1);
     });
 
     it('Should have input for last name', () => {
-        expect(wrapper.find('input#lastName')).toHaveLength(1);
+        expect(wrapper.find('input#lastName').length).toEqual(1);
     });
 
     it('Should have input for age', () => {
-        expect(wrapper.find('input#age')).toHaveLength(1);
+        expect(wrapper.find('input#age').length).toEqual(1);
     });
 
     it('Username input should have empty state', () => {
