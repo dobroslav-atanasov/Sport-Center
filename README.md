@@ -2,8 +2,6 @@
 
 Sport Center is a web application for sport events around the world.
 
-![alt text](https://github.com/dobroslav-atanasov/Sport-Center/blob/master/app/public/Image-1.JPG)
-
 ### Installing the App
 
 1. Clone the repository
