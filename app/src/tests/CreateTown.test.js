@@ -72,7 +72,4 @@ describe('Login component test', () => {
         const result = validationService.imageUrlValidation('htp:\\test');
         expect(result).toEqual(false);
     });
-
-    it('Submit should return correct result', () => {
-    });
 });
