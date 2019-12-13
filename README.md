@@ -42,6 +42,14 @@ npm install
 node index
 ```
 
+### Run tests
+
+1. Run unit tests with command
+
+```
+npm test
+```
+
 ## Authors
 
 * **Dobroslav Atanasov** - GitHub [Dobroslav Atanasov](https://github.com/dobroslav-atanasov)
