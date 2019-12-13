@@ -82,17 +82,17 @@ class Users extends React.Component {
                             <tbody>
                                 {users.map(u => <tr>
                                     <td className="text-center align-middle" key={u.username}>{u.username}</td>
-                                    <td className="text-center align-middle" key={u.firstName.toString() + u.lastName.toString()}>{u.firstName} {u.lastName}</td>
-                                    <td className="text-center align-middle" key={u.role.toString()}>{u.role}</td>
-                                    <td className="text-center align-middle" key={u.username.toString() + u.role.toString()}>
+                                    <td className="text-center align-middle" key={u.firstName + u.lastName}>{u.firstName} {u.lastName}</td>
+                                    <td className="text-center align-middle" key={u.role}>{u.role}</td>
+                                    <td className="text-center align-middle" key={u.username + u.role}>
                                         <button className="btn btn-success btn-sm" name={u.username} onClick={this.changeRole}>
                                             Change role
-                                </button>
+                                        </button>
                                     </td>
-                                    <td className="text-center align-middle" key={u.role.toString() + u.username.toString()}>
+                                    <td className="text-center align-middle" key={u.role + u.username}>
                                         <button className="btn btn-danger btn-sm" name={u.username} onClick={this.deleteUser}>
                                             Delete User
-                                </button>
+                                        </button>
                                     </td>
                                 </tr>)}
                             </tbody>

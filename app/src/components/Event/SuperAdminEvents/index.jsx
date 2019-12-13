@@ -70,9 +70,9 @@ class Events extends React.Component {
                             <tbody>
                                 {events.map(e => <tr>
                                     <td className="text-center align-middle" key={e.name}>{e.name}</td>
-                                    <td className="text-center align-middle" key={e.date.toString()}>{new Date(e.date).getDate()}-{new Date(e.date).getMonth() + 1}-{new Date(e.date).getFullYear()}</td>
-                                    <td className="text-center align-middle" key={e.town.name.toString()}>{e.town.name}</td>
-                                    <td className="text-center align-middle" key={e.name.toString() + e.town.name.toString()}>
+                                    <td className="text-center align-middle" key={e.date}>{new Date(e.date).getDate()}-{new Date(e.date).getMonth() + 1}-{new Date(e.date).getFullYear()}</td>
+                                    <td className="text-center align-middle" key={e.town.name}>{e.town.name}</td>
+                                    <td className="text-center align-middle" key={e.name + e.town.name}>
                                         <button className="btn btn-danger btn-sm" id={e._id} onClick={this.deleteEvent}>
                                             Delete Event
                                         </button>

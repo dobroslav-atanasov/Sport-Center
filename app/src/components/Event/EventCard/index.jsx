@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const EventCard = ({ id, name, location, description, imageUrl, town, date, participants }) => {
-
     return (
         <div className="col-md" style={{ marginBottom: 30 }}>
             <div className="card" style={{ width: 350 }}>
