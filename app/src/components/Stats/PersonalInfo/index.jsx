@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
+import StatsContext from '../StatsContext';
 
-const PersonalInfo = ({ user }) => {
+const PersonalInfo = () => {
+    const user = React.useContext(StatsContext);
+
     return (
         <Fragment>
             <h3>

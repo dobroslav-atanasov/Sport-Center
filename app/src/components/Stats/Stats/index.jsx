@@ -4,8 +4,10 @@ import userService from '../../../services/userService';
 import authService from '../../../services/authService';
 import Loading from '../../Loading';
 import PersonalStats from '../PersonalStats';
+import StatsContext from '../StatsContext';
 
 const Stats = () => {
+
     const [user, setUser] = useState(undefined);
 
     useEffect(() => {
@@ -19,16 +21,18 @@ const Stats = () => {
     return (
         <Fragment>
             {user ?
-                <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
-                    <div className="row">
-                        <div className="col-md-5">
-                            <PersonalInfo user={user} />
+                <StatsContext.Provider value={user}>
+                    <div className="container" style={{ marginTop: 30, marginBottom: 50 }}>
+                        <div className="row">
+                            <div className="col-md-5">
+                                <PersonalInfo />
+                            </div>
+                            <div className="col-md-7">
+                                <PersonalStats />
+                            </div>
                         </div>
-                        <div className="col-md-7">
-                            <PersonalStats user={user} />
-                        </div>
-                    </div>
-                </div >
+                    </div >
+                </StatsContext.Provider>
                 : <Loading />
             }
         </Fragment>

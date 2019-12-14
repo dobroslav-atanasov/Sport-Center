@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import Chart from '../Chart';
+import StatsContext from '../StatsContext';
 
-const PersonalStats = ({ user }) => {
+const PersonalStats = () => {
+    const user = React.useContext(StatsContext);
     const bestRank = user.results.length === 0 ? 0 : user.results.map(x => x.rank).sort()[0];
     const worstRank = user.results.length === 0 ? 0 : user.results.map(x => x.rank).sort()[user.results.length - 1];
     const averageRank = user.results.length === 0 ? 0 : Math.round(user.results.map(x => x.rank).reduce((a, b) => (a + b)) / user.results.length);
@@ -50,7 +52,7 @@ const PersonalStats = ({ user }) => {
                 </tbody>
             </table>
 
-            <Chart user={user}/>
+            <Chart />
         </Fragment>
     );
 };

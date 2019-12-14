@@ -1,7 +1,9 @@
 import React, { Fragment, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
+import StatsContext from '../StatsContext';
 
-const Chart = ({ user }) => {
+const Chart = () => {
+    const user = React.useContext(StatsContext);
     const chart = useRef();
     const data = {
         labels: user.results.map(x => `${new Date(x.event.date).getDate()}-${new Date(x.event.date).getMonth() + 1}-${new Date(x.event.date).getFullYear()}`),
