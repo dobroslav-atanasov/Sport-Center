@@ -46,16 +46,16 @@ const Header = () => {
                 {(user !== undefined && user.role === 'User') &&
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <Link to="/my-events" className="nav-link">My Events</Link>
+                            <Link to="/my-events" className="nav-link"><i class="fa fa-calendar"></i> My Events</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/my-results" className="nav-link">My Results</Link>
+                            <Link to="/my-results" className="nav-link"><i class="fa fa-address-book"></i> My Results</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/stats" className="nav-link">Stats</Link>
+                            <Link to="/stats" className="nav-link"><i class="fa fa-signal"></i> Stats</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link to="/standings" className="nav-link">Standings</Link>
+                            <Link to="/standings" className="nav-link"><i class="fa fa-list-ol"></i> Standings</Link>
                         </li>
                     </ul>
                 }

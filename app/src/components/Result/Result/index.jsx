@@ -78,7 +78,7 @@ class Result extends React.Component {
                                         <td className="text-center align-middle" key={u.username + u.age}>{u.age}</td>
                                         <td className="text-center align-middle" key={u.username + u.gender}>{u.gender}</td>
                                         <td className="text-center align-middle" key={u.username + index}>
-                                            {new Date(u.time).getHours()}:{new Date(u.time).getMinutes()}:{new Date(u.time).getSeconds()}</td>
+                                            {new Date(u.time).getMinutes()}:{new Date(u.time).getSeconds()}</td>
                                     </tr>
                                 )}
                             </tbody>

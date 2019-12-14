@@ -18,6 +18,22 @@ class MyEvents extends React.Component {
             });
     };
 
+    searchEvents = (event) => {
+        event.preventDefault();
+        const { events } = this.state;
+        const userId = authService.getUserInfo().id;
+        const search = event.target.value.toLowerCase();
+        if (search === '') {
+            eventService.getEventsByUserId(userId)
+                .then(events => {
+                    this.setState({ events: events });
+                });
+        } else {
+            const result = events.filter(x => x.name.toLowerCase().includes(search));
+            this.setState({ events: result });
+        }
+    };
+
     render() {
         const { events } = this.state;
         return (
