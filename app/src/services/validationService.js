@@ -79,7 +79,7 @@ const validationService = {
     },
 
     eventDescriptionValidation: function (value) {
-        const regex = RegExp(/[A-Za-z0-9.!?,())\s]{30,50}/i);
+        const regex = RegExp(/[A-Za-z0-9.!?,())\s]{40,}/i);
         return regex.test(value);
     },
 };

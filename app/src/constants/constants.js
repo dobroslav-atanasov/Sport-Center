@@ -35,7 +35,7 @@ const constants = {
     createEvent: {
         INVALID_NAME: 'Event name should be at least 2 characters long!',
         INVALID_LOCATION: 'Location should be at least 2 characters long!',
-        INVALID_DESCRIPTION: 'Description length should between 30 na 50 symbols and contains only letters, digits and special symbols /.,!?()/!',
+        INVALID_DESCRIPTION: 'Description length should be at least 40 symbols and contains only letters, digits and special symbols /.,!?()/!',
         NAME_REQUIRED: 'Event name is required!',
         LOCATION_REQUIRED: 'Location is required!',
         DATE_REQUIRED: 'Date is required!',
