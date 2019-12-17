@@ -22,47 +22,38 @@ import Result from '../Result/Result';
 import Stats from '../Stats/Stats';
 import Standings from '../Standings';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn: false
-    }
-  };
+const App = () => {
+  const superAdminRoute = routes.protectedRoute(['SuperAdmin'], routes.isSuperAdmin);
+  const adminRoute = routes.protectedRoute(['Admin'], routes.isAdmin);
+  const userRoute = routes.userRoute(['User'], routes.isAuthenticated);
+  const publicRoute = routes.protectedRoute(['User'], routes.isNotAuthenticated);
 
-  render() {
-    const superAdminRoute = routes.protectedRoute(['SuperAdmin'], routes.isSuperAdmin);
-    const adminRoute = routes.protectedRoute(['Admin'], routes.isAdmin);
-    const userRoute = routes.userRoute(['User'], routes.isAuthenticated);
-    const publicRoute = routes.protectedRoute(['User'], routes.isNotAuthenticated);
-
-    return (
-      <Router>
-        <Route path="/" component={Header} />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/register" component={publicRoute(Register)} />
-          <Route exact path="/login" component={publicRoute(Login)} />
-          <Route exact path="/logout" component={userRoute(Logout)} />
-          <Route exact path="/about" component={publicRoute(About)} />
-          <Route exact path="/add-town" component={superAdminRoute(CreateTown)} />
-          <Route exact path="/create-event" component={adminRoute(CreateEvent)} />
-          <Route exact path="/users" component={superAdminRoute(Users)} />
-          <Route exact path="/super-admin-events" component={superAdminRoute(SuperAdminEvents)} />
-          <Route exact path="/my-created-events" component={adminRoute(MyCreatedEvents)} />
-          <Route exact path="/event/:id" component={userRoute(Event)} />
-          <Route exact path="/add-result/:id" component={adminRoute(CreateResult)} />
-          <Route exact path="/my-events" component={userRoute(MyEvents)} />
-          <Route exact path="/my-results" component={userRoute(MyResults)} />
-          <Route exact path="/result/:id" component={userRoute(Result)} />
-          <Route exact path="/stats" component={userRoute(Stats)} />
-          <Route exact path="/standings" component={userRoute(Standings)} />
-          <Route component={NotFound} />
-        </Switch>
-        <Route path="/" component={Footer} />
-      </Router>
-    );
-  }
+  return (
+    <Router>
+      <Route path="/" component={Header} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/register" component={publicRoute(Register)} />
+        <Route exact path="/login" component={publicRoute(Login)} />
+        <Route exact path="/logout" component={userRoute(Logout)} />
+        <Route exact path="/about" component={publicRoute(About)} />
+        <Route exact path="/add-town" component={superAdminRoute(CreateTown)} />
+        <Route exact path="/create-event" component={adminRoute(CreateEvent)} />
+        <Route exact path="/users" component={superAdminRoute(Users)} />
+        <Route exact path="/super-admin-events" component={superAdminRoute(SuperAdminEvents)} />
+        <Route exact path="/my-created-events" component={adminRoute(MyCreatedEvents)} />
+        <Route exact path="/event/:id" component={userRoute(Event)} />
+        <Route exact path="/add-result/:id" component={adminRoute(CreateResult)} />
+        <Route exact path="/my-events" component={userRoute(MyEvents)} />
+        <Route exact path="/my-results" component={userRoute(MyResults)} />
+        <Route exact path="/result/:id" component={userRoute(Result)} />
+        <Route exact path="/stats" component={userRoute(Stats)} />
+        <Route exact path="/standings" component={userRoute(Standings)} />
+        <Route component={NotFound} />
+      </Switch>
+      <Route path="/" component={Footer} />
+    </Router>
+  );
 };
 
 export default App;
